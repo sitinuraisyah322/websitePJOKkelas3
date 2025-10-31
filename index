@@ -1,0 +1,358 @@
+/*
+React single-file app: Interactive PJOK learning website for Grade 3 (1 school year)
+Usage notes:
+1. Create a React project (Vite or Create React App).
+2. Install dependencies:
+   npm install framer-motion lottie-react
+3. TailwindCSS must be set up in the project (follow Tailwind + CRA or Vite setup).
+4. Save this file as src/App.jsx and run the app.
+
+This single-file contains small component implementations, sample materi data for Semester 1 & 2,
+admin panel for add/edit/delete stored in localStorage, Lottie animations via remote URLs,
+and simple audio playback placeholders. Replace Lottie URLs and audio with your own assets.
+*/
+
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Lottie from 'lottie-react';
+
+// ---------- Sample data for 1 year (two semesters). Replace or expand as needed ----------
+const SAMPLE_MATERI = [
+  {
+    id: 's1-t1', semester: 1, title: 'Gerak Lokomotor: Berlari dan Melompat',
+    story: 'Hari ini Bu Sinta mengajak anak-anak ke lapangan untuk berlatih berlari dan melompat. Ayo ikuti langkahnya!',
+    objectives: ['Membedakan gerak berlari dan melompat', 'Mampu melakukan latihan dasar berlari dan melompat'],
+    activity: 'Pemanasan, lalu latihan berlari cepat 20m, diikuti latihan lompat jauh sederhana.',
+    lottie: 'https://assets9.lottiefiles.com/packages/lf20_x62chJ.json',
+    audio: '',
+  },
+  {
+    id: 's1-t2', semester: 1, title: 'Gerak Non-Lokomotor: Menekuk dan Meregang',
+    story: 'Bu Sinta mengajak murid melakukan peregangan agar tubuh lebih lentur sebelum bergerak.',
+    objectives: ['Memahami konsep gerak non-lokomotor', 'Mempraktikkan peregangan sederhana'],
+    activity: 'Latihan peregangan leher, lengan, dan kaki sambil hitung 1-10.',
+    lottie: 'https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json',
+    audio: '',
+  },
+  {
+    id: 's1-t3', semester: 1, title: 'Gerak Manipulatif: Melempar dan Menangkap',
+    story: 'Di lapangan, Bu Sinta memberikan bola kecil. Ayo belajar melempar dan menangkap dengan aman.',
+    objectives: ['Mempraktikkan teknik melempar dan menangkap', 'Bekerjasama dalam pasangan'],
+    activity: 'Latihan melempar 3 langkah dan menangkap dengan dua tangan.',
+    lottie: 'https://assets6.lottiefiles.com/packages/lf20_6h2u0z.json',
+    audio: '',
+  },
+  {
+    id: 's1-t4', semester: 1, title: 'Permainan Tradisional: Engklek dan Kasti Mini',
+    story: 'Permainan tradisional menyenangkan — sambil belajar peraturan dan sportivitas.',
+    objectives: ['Mengenal permainan tradisional', 'Mengikuti aturan sederhana permainan'],
+    activity: 'Bermain engklek bergantian dan kasti mini di lapangan sekolah.',
+    lottie: 'https://assets3.lottiefiles.com/packages/lf20_lk80fpsm.json',
+    audio: '',
+  },
+  {
+    id: 's1-t5', semester: 1, title: 'Kebugaran Jasmani: Melatih Daya Tahan',
+    story: 'Latihan kebugaran ringan membantu tubuh tetap sehat. Lakukan bersama teman!',
+    objectives: ['Melakukan aktivitas kebugaran sederhana', 'Mengerti manfaat olahraga untuk tubuh'],
+    activity: 'Circuit sederhana: lompat tali 30 detik, sit-up 10x, jalan cepat 1 menit.',
+    lottie: 'https://assets7.lottiefiles.com/packages/lf20_iwmd6pyr.json',
+    audio: '',
+  },
+  // Semester 2 samples
+  {
+    id: 's2-t6', semester: 2, title: 'Aktivitas Air dan Keseimbangan',
+    story: 'Bu Sinta mengenalkan dasar keseimbangan tubuh dan aktivitas air (teori dasar renang).',
+    objectives: ['Memahami konsep keseimbangan', 'Mengenal gerakan renang dasar lewat permainan'],
+    activity: 'Latihan keseimbangan berdiri di satu kaki; pengenalan gerakan lengan renang dengan lagu.',
+    lottie: 'https://assets1.lottiefiles.com/packages/lf20_ydo1amjm.json',
+    audio: '',
+  },
+  {
+    id: 's2-t7', semester: 2, title: 'Senam dan Tari: Gerak Ritmis',
+    story: 'Anak-anak membuat gerakan senam sederhana sambil menari mengikuti ritme musik ceria.',
+    objectives: ['Melakukan rangkaian gerak ritmis', 'Bekerjasama membentuk formasi sederhana'],
+    activity: 'Senam sederhana 8 hitungan, latihan formasi 2 baris.',
+    lottie: 'https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json',
+    audio: '',
+  },
+  {
+    id: 's2-t8', semester: 2, title: 'Permainan Berkelompok dan Kerjasama',
+    story: 'Permainan berkelompok melatih komunikasi dan kebersamaan antar teman.',
+    objectives: ['Meningkatkan kemampuan kerja sama', 'Menghargai peran teman dalam tim'],
+    activity: 'Permainan relay sederhana dan tantangan bekerja sama membangun menara kon.' ,
+    lottie: 'https://assets4.lottiefiles.com/packages/lf20_x62chJ.json',
+    audio: '',
+  },
+  {
+    id: 's2-t9', semester: 2, title: 'Istirahat dan Pola Hidup Sehat',
+    story: 'Belajar tentang pentingnya tidur, makan sehat, dan istirahat agar siap belajar dan bergerak.',
+    objectives: ['Menjelaskan pentingnya pola hidup sehat', 'Menerapkan kebiasaan sederhana sehari-hari'],
+    activity: 'Diskusi singkat, buat poster kebiasaan sehat di kelas.',
+    lottie: 'https://assets8.lottiefiles.com/packages/lf20_u4yrau.json',
+    audio: '',
+  },
+  {
+    id: 's2-t10', semester: 2, title: 'Sportivitas dan Semangat Kebersamaan',
+    story: 'Nilai sportivitas lebih penting daripada menang. Ayo jadi pemain yang adil dan suportif!',
+    objectives: ['Memahami nilai sportivitas', 'Menerapkan sikap sportif dalam permainan'],
+    activity: 'Role-play situasi menang & kalah, refleksi kelompok.',
+    lottie: 'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',
+    audio: '',
+  }
+];
+
+// ---------- Utility: localStorage key ----------
+const STORAGE_KEY = 'pjok_kelas3_materi_v1';
+
+// ---------- Components ----------
+function Header({ onOpenAdmin }){
+  return (
+    <header className="bg-gradient-to-r from-sky-400 to-emerald-400 p-4 text-white flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold">PJOK</div>
+        <div>
+          <h1 className="text-xl font-semibold">Website Belajar PJOK - Kelas 3</h1>
+          <p className="text-sm opacity-90">Belajar melalui cerita dan animasi bersama Bu Sinta</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-3">
+        <button onClick={onOpenAdmin} className="bg-white/20 px-3 py-2 rounded-md">Menu Guru</button>
+      </div>
+    </header>
+  );
+}
+
+function MateriCard({ materi, onPlayAudio, onOpen }){
+  return (
+    <motion.div whileHover={{ y: -6 }} className="bg-white rounded-2xl shadow p-4 flex gap-4">
+      <div className="w-36 h-28 bg-gray-100 rounded overflow-hidden flex items-center justify-center">
+        {materi.lottie ? (
+          <Lottie animationData={null} loop autoplay style={{ width: '100%', height: '100%' }} />
+        ) : (
+          <div className="text-sm text-gray-500">Ilustrasi</div>
+        )}
+      </div>
+      <div className="flex-1">
+        <h3 className="font-semibold">{materi.title}</h3>
+        <p className="text-xs mt-1 text-gray-600 line-clamp-3">{materi.story}</p>
+        <div className="mt-3 flex gap-2">
+          <button onClick={() => onOpen(materi)} className="text-sm bg-slate-100 px-3 py-1 rounded">Lihat Materi</button>
+          <button onClick={() => onPlayAudio(materi)} className="text-sm bg-slate-100 px-3 py-1 rounded">Dengar Penjelasan</button>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function MateriModal({ materi, onClose }){
+  if(!materi) return null;
+  return (
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
+      <motion.div initial={{ scale:0.9, opacity:0 }} animate={{ scale:1, opacity:1 }} className="bg-white rounded-xl w-full max-w-3xl p-6">
+        <div className="flex justify-between items-start gap-4">
+          <div>
+            <h2 className="text-2xl font-bold">{materi.title}</h2>
+            <p className="text-sm text-gray-600">{materi.objectives?.join(' • ')}</p>
+          </div>
+          <button onClick={onClose} className="text-gray-500">Tutup ✕</button>
+        </div>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="md:col-span-2">
+            <p className="text-gray-700">{materi.story}</p>
+            <div className="mt-3">
+              <h4 className="font-semibold">Aktivitas</h4>
+              <p className="text-sm text-gray-600">{materi.activity}</p>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-3 rounded">
+            {materi.lottie ? (
+              <LottieAnimation url={materi.lottie} />
+            ) : <div className="text-sm text-gray-500">Tidak ada animasi</div>}
+            <div className="mt-3 flex gap-2">
+              <button className="px-3 py-1 text-sm bg-sky-100 rounded">Latihan Yuk!</button>
+              <button className="px-3 py-1 text-sm bg-emerald-100 rounded">Tambah Catatan</button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function LottieAnimation({ url }){
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    let mounted = true;
+    async function fetchJson(){
+      try{
+        const res = await fetch(url);
+        const json = await res.json();
+        if(mounted) setData(json);
+      }catch(e){
+        console.error('Gagal memuat lottie', e);
+      }
+    }
+    fetchJson();
+    return () => { mounted = false };
+  }, [url]);
+  if(!data) return <div className="w-full h-44 flex items-center justify-center text-xs text-gray-400">Memuat animasi...</div>;
+  return <Lottie animationData={data} loop style={{ width:'100%', height: 180 }} />;
+}
+
+function AdminPanel({ onClose, onSave, onDelete, materiList }){
+  const [form, setForm] = useState({ id: '', semester: 1, title:'', story:'', objectives: '', activity:'', lottie:'', audio:'' });
+
+  useEffect(()=>{
+    setForm({ id: '', semester: 1, title:'', story:'', objectives: '', activity:'', lottie:'', audio:'' });
+  }, [onClose]);
+
+  function handleAdd(){
+    if(!form.title) return alert('Masukkan judul materi');
+    const newItem = { ...form, id: form.id || 'm' + Date.now(), objectives: form.objectives.split('\n').map(s=>s.trim()).filter(Boolean) };
+    onSave(newItem);
+    setForm({ id: '', semester: 1, title:'', story:'', objectives: '', activity:'', lottie:'', audio:'' });
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/50 p-4 flex items-start justify-center">
+      <motion.div initial={{ y:-20, opacity:0 }} animate={{ y:0, opacity:1 }} className="bg-white rounded-xl p-6 w-full max-w-2xl">
+        <div className="flex justify-between items-center">
+          <h3 className="font-bold">Panel Guru - Kelola Materi</h3>
+          <button onClick={onClose} className="text-sm text-gray-500">Tutup</button>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-xs">Semester</label>
+            <select value={form.semester} onChange={e=>setForm({...form, semester: Number(e.target.value)})} className="w-full p-2 border rounded">
+              <option value={1}>Semester 1</option>
+              <option value={2}>Semester 2</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-xs">Judul Materi</label>
+            <input value={form.title} onChange={e=>setForm({...form, title:e.target.value})} className="w-full p-2 border rounded" />
+          </div>
+          <div className="col-span-2">
+            <label className="text-xs">Cerita / Narasi</label>
+            <textarea value={form.story} onChange={e=>setForm({...form, story:e.target.value})} className="w-full p-2 border rounded h-20" />
+          </div>
+          <div className="col-span-2">
+            <label className="text-xs">Objectives (pisahkan baris baru untuk tiap indikator)</label>
+            <textarea value={form.objectives} onChange={e=>setForm({...form, objectives:e.target.value})} className="w-full p-2 border rounded h-20" />
+          </div>
+          <div className="col-span-2">
+            <label className="text-xs">Aktivitas singkat</label>
+            <textarea value={form.activity} onChange={e=>setForm({...form, activity:e.target.value})} className="w-full p-2 border rounded h-16" />
+          </div>
+          <div>
+            <label className="text-xs">URL Lottie (animasi)</label>
+            <input value={form.lottie} onChange={e=>setForm({...form, lottie:e.target.value})} className="w-full p-2 border rounded" />
+          </div>
+          <div>
+            <label className="text-xs">URL Audio (opsional)</label>
+            <input value={form.audio} onChange={e=>setForm({...form, audio:e.target.value})} className="w-full p-2 border rounded" />
+          </div>
+        </div>
+
+        <div className="mt-4 flex gap-2">
+          <button onClick={handleAdd} className="bg-emerald-400 px-4 py-2 rounded text-white">Tambah Materi</button>
+          <button onClick={()=>{ const id = prompt('Masukkan ID materi yang ingin dihapus (contoh s1-t1 atau m12345)'); if(id) onDelete(id); }} className="bg-red-300 px-4 py-2 rounded">Hapus Materi</button>
+          <div className="ml-auto text-sm text-gray-500">Total materi: {materiList.length}</div>
+        </div>
+
+        <div className="mt-4">
+          <h4 className="font-semibold">Daftar Materi (klik untuk salin ID)</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 max-h-48 overflow-auto">
+            {materiList.map(m=> (
+              <div key={m.id} className="p-2 bg-gray-50 rounded flex items-center justify-between">
+                <div className="text-sm">{m.id} • {m.title}</div>
+                <button onClick={()=>navigator.clipboard.writeText(m.id)} className="text-xs text-sky-600">Salin ID</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+// ---------- Main App ----------
+export default function App(){
+  const [materi, setMateri] = useState([]);
+  const [filterSemester, setFilterSemester] = useState(1);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [openMateri, setOpenMateri] = useState(null);
+
+  useEffect(()=>{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      try{ setMateri(JSON.parse(raw)); }catch(e){ setMateri(SAMPLE_MATERI); }
+    }else{
+      setMateri(SAMPLE_MATERI);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(SAMPLE_MATERI));
+    }
+  }, []);
+
+  useEffect(()=>{ localStorage.setItem(STORAGE_KEY, JSON.stringify(materi)); }, [materi]);
+
+  function handleSave(newItem){
+    setMateri(prev => [newItem, ...prev.filter(p=>p.id !== newItem.id)]);
+  }
+
+  function handleDelete(id){
+    if(!confirm('Yakin menghapus materi ' + id + '?')) return;
+    setMateri(prev => prev.filter(m=>m.id !== id));
+  }
+
+  function playAudioFor(m){
+    if(!m.audio) return alert('Belum ada audio. Silakan upload URL audio lewat Panel Guru.');
+    const a = new Audio(m.audio); a.play();
+  }
+
+  const shown = materi.filter(m => m.semester === filterSemester);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-sky-50">
+      <Header onOpenAdmin={()=>setShowAdmin(true)} />
+
+      <main className="p-6 max-w-6xl mx-auto">
+        <section className="mb-6">
+          <motion.div initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} className="bg-white p-6 rounded-2xl shadow">
+            <h2 className="text-xl font-bold">Pilih Semester</h2>
+            <div className="mt-3 flex gap-3">
+              <button onClick={()=>setFilterSemester(1)} className={`px-4 py-2 rounded ${filterSemester===1 ? 'bg-sky-500 text-white' : 'bg-slate-100'}`}>Semester 1</button>
+              <button onClick={()=>setFilterSemester(2)} className={`px-4 py-2 rounded ${filterSemester===2 ? 'bg-sky-500 text-white' : 'bg-slate-100'}`}>Semester 2</button>
+            </div>
+            <p className="text-sm text-gray-500 mt-3">Setiap materi hadir bersama cerita singkat, ilustrasi bergerak, dan latihan interaktif.</p>
+          </motion.div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {shown.map(m => (
+            <MateriCard key={m.id} materi={m} onPlayAudio={playAudioFor} onOpen={(mm)=>setOpenMateri(mm)} />
+          ))}
+        </section>
+
+        <section className="mt-8">
+          <h3 className="font-semibold text-lg">Galeri Ilustrasi</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-3">
+            {materi.slice(0,8).map(m=> (
+              <motion.div key={m.id} whileHover={{ scale:1.03 }} className="p-3 bg-white rounded">
+                <div className="h-36 overflow-hidden rounded bg-gray-50 flex items-center justify-center">
+                  {m.lottie ? <LottieAnimation url={m.lottie} /> : <div className="text-sm">No anim</div>}
+                </div>
+                <div className="mt-2 text-sm font-medium">{m.title}</div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+      </main>
+
+      {showAdmin && <AdminPanel onClose={()=>setShowAdmin(false)} onSave={handleSave} onDelete={handleDelete} materiList={materi} />}
+      {openMateri && <MateriModal materi={openMateri} onClose={()=>setOpenMateri(null)} />}
+
+      <footer className="p-4 text-center text-xs text-gray-500">Dibuat untuk pembelajaran PJOK Kelas 3 • Ubah data lewat Panel Guru</footer>
+    </div>
+  );
+}
