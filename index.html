@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 25%, #fd79a8 50%, #fdcb6e 75%, #6c5ce7 100%);
             min-height: 100%;
             overflow-x: hidden;
         }
@@ -30,11 +30,11 @@
 
         /* Header */
         .header {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            background: linear-gradient(45deg, #74b9ff, #0984e3, #00cec9);
             border-radius: 25px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
+            box-shadow: 0 10px 40px rgba(116, 185, 255, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -46,8 +46,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
         }
 
         .nav-buttons {
@@ -62,7 +62,7 @@
         }
 
         .nav-btn {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
             border: none;
             padding: 14px 28px;
             border-radius: 30px;
@@ -70,28 +70,28 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(168, 237, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 234, 167, 0.4);
             font-size: 15px;
         }
 
         .nav-btn:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.6);
+            box-shadow: 0 8px 25px rgba(255, 234, 167, 0.6);
         }
 
         .title {
             text-align: center;
-            color: #2d3748;
+            color: white;
             font-size: 2.8rem;
             margin: 25px 0;
-            text-shadow: 3px 3px 6px rgba(255,255,255,0.8);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
             position: relative;
             z-index: 2;
         }
 
         .welcome-text {
             text-align: center;
-            color: #4a5568;
+            color: #f8f9fa;
             font-size: 1.3rem;
             margin-bottom: 12px;
             position: relative;
@@ -107,12 +107,12 @@
         }
 
         .chapter-card {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
             border-radius: 25px;
             padding: 25px;
             cursor: pointer;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 35px rgba(252, 182, 159, 0.3);
+            box-shadow: 0 10px 35px rgba(162, 155, 254, 0.3);
             position: relative;
             overflow: hidden;
             border: 3px solid rgba(255,255,255,0.3);
@@ -120,7 +120,7 @@
 
         .chapter-card:hover {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(252, 182, 159, 0.5);
+            box-shadow: 0 20px 50px rgba(162, 155, 254, 0.5);
         }
 
         .chapter-card::before {
@@ -130,7 +130,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
             transform: translateX(-100%);
             transition: transform 0.8s;
         }
@@ -142,23 +142,23 @@
         .chapter-number {
             font-size: 3.5rem;
             font-weight: bold;
-            color: #e53e3e;
+            color: #ffeaa7;
             text-align: center;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .chapter-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #2d3748;
+            color: white;
             text-align: center;
             margin-bottom: 15px;
             line-height: 1.3;
         }
 
         .chapter-icon {
-            font-size: 4.5rem;
+            font-size: 4rem;
             text-align: center;
             margin-bottom: 15px;
             animation: bounce 2s infinite;
@@ -178,7 +178,7 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #ffeef8, #e8f4fd);
+            background: linear-gradient(135deg, #ddd6fe, #e0e7ff);
             margin: 3% auto;
             padding: 35px;
             border-radius: 30px;
@@ -208,34 +208,34 @@
         /* Learning Styles */
         .learning-styles {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             margin: 30px 0;
         }
 
         .style-card {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
             padding: 25px;
             border-radius: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 234, 167, 0.3);
             border: 2px solid rgba(255,255,255,0.4);
         }
 
         .style-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(168, 237, 234, 0.5);
+            box-shadow: 0 12px 35px rgba(255, 234, 167, 0.5);
         }
 
         .style-icon {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 15px;
         }
 
         .style-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 10px;
             color: #2d3748;
@@ -243,16 +243,16 @@
 
         /* Quiz */
         .quiz-container {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
             color: white;
             padding: 30px;
             border-radius: 25px;
             margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 40px rgba(116, 185, 255, 0.3);
         }
 
         .quiz-question {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 25px;
             text-align: center;
             line-height: 1.5;
@@ -260,19 +260,19 @@
 
         .quiz-options {
             display: grid;
-            gap: 18px;
+            gap: 15px;
             margin-bottom: 25px;
         }
 
         .quiz-option {
             background: rgba(255,255,255,0.15);
             border: 3px solid transparent;
-            padding: 18px;
-            border-radius: 18px;
+            padding: 16px;
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .quiz-option:hover {
@@ -287,18 +287,18 @@
         }
 
         .quiz-option.correct {
-            background: #48bb78;
-            border-color: #38a169;
+            background: #00b894;
+            border-color: #00a085;
         }
 
         .quiz-option.incorrect {
-            background: #f56565;
-            border-color: #e53e3e;
+            background: #e17055;
+            border-color: #d63031;
         }
 
         /* Admin Panel */
         .admin-panel {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
             color: white;
             padding: 35px;
             border-radius: 25px;
@@ -344,7 +344,7 @@
         }
 
         .btn {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
             border: none;
             padding: 18px 35px;
             border-radius: 30px;
@@ -357,20 +357,20 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 10px 30px rgba(253, 121, 168, 0.4);
         }
 
         .btn-secondary {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
         }
 
         .btn-danger {
-            background: linear-gradient(45deg, #fd79a8, #e84393);
+            background: linear-gradient(45deg, #e17055, #d63031);
         }
 
         /* Content Display */
         .content-display {
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.9);
             padding: 30px;
             border-radius: 20px;
             margin: 25px 0;
@@ -379,11 +379,11 @@
         }
 
         .material-item {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
             padding: 20px;
             border-radius: 15px;
             margin: 15px 0;
-            border-left: 5px solid #ff6b6b;
+            border-left: 5px solid #fd79a8;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
@@ -393,10 +393,10 @@
                 transform: translateY(0);
             }
             40% {
-                transform: translateY(-12px);
+                transform: translateY(-10px);
             }
             60% {
-                transform: translateY(-6px);
+                transform: translateY(-5px);
             }
         }
 
@@ -405,19 +405,7 @@
                 transform: translateY(0px) rotate(0deg);
             }
             50% {
-                transform: translateY(-25px) rotate(180deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.08);
-            }
-            100% {
-                transform: scale(1);
+                transform: translateY(-20px) rotate(180deg);
             }
         }
 
@@ -464,7 +452,7 @@
             }
             
             .chapter-title {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
         }
 
@@ -488,7 +476,7 @@
         }
 
         .success-message {
-            background: #48bb78;
+            background: #00b894;
             color: white;
             padding: 18px;
             border-radius: 12px;
@@ -497,7 +485,7 @@
         }
 
         .error-message {
-            background: #f56565;
+            background: #e17055;
             color: white;
             padding: 18px;
             border-radius: 12px;
@@ -507,7 +495,7 @@
 
         /* Special styling for grade 2 */
         .grade-indicator {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
             color: #2d3748;
             padding: 8px 20px;
             border-radius: 20px;
@@ -515,6 +503,17 @@
             font-size: 14px;
             display: inline-block;
             margin-bottom: 15px;
+        }
+
+        .difficulty-badge {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 0;
         }
     </style>
   <style>@view-transition { navigation: auto; }</style>
@@ -528,21 +527,24 @@
     <div class="grade-indicator">
      📚 Kelas 2 SD
     </div>
-    <h1 class="title" id="site-title">Asyiknya Belajar PJOK Kelas 2! 🏃‍♂️⚽</h1>
-    <p class="welcome-text" id="welcome-message">Selamat datang adik-adik kelas 2! Mari belajar olahraga dengan gembira!</p>
-    <p class="welcome-text" id="teacher-name">Guru PJOK: Bapak Ahmad Santoso, S.Pd</p>
+    <h1 class="title" id="site-title">Ayo Belajar PJOK Kelas 2! 🏃‍♂️⚽🤸‍♀️</h1>
+    <p class="welcome-text" id="welcome-message">Selamat datang siswa kelas 2! Mari belajar olahraga dengan cara yang menyenangkan dan mudah!</p>
+    <p class="welcome-text" id="teacher-name">Guru PJOK: Siti Nur Aisyah, S. Pd</p>
    </div><!-- Main Content -->
    <div id="main-content">
     <div class="chapters-grid">
      <div class="chapter-card" onclick="openChapter(1)">
       <div class="chapter-icon">
-       🚶‍♂️
+       🏃‍♂️
       </div>
       <div class="chapter-number">
        1
       </div>
       <div class="chapter-title">
        Gerak Dasar Lokomotor
+      </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
       </div>
      </div>
      <div class="chapter-card" onclick="openChapter(2)">
@@ -555,6 +557,9 @@
       <div class="chapter-title">
        Gerak Dasar Non Lokomotor
       </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
+      </div>
      </div>
      <div class="chapter-card" onclick="openChapter(3)">
       <div class="chapter-icon">
@@ -565,6 +570,9 @@
       </div>
       <div class="chapter-title">
        Gerak Dasar Manipulatif
+      </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
       </div>
      </div>
      <div class="chapter-card" onclick="openChapter(4)">
@@ -577,6 +585,9 @@
       <div class="chapter-title">
        Aktivitas Senam
       </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
+      </div>
      </div>
      <div class="chapter-card" onclick="openChapter(5)">
       <div class="chapter-icon">
@@ -587,6 +598,9 @@
       </div>
       <div class="chapter-title">
        Aktivitas Gerak Berirama
+      </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
       </div>
      </div>
      <div class="chapter-card" onclick="openChapter(6)">
@@ -599,6 +613,9 @@
       <div class="chapter-title">
        Aktivitas Kebugaran Jasmani
       </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
+      </div>
      </div>
      <div class="chapter-card" onclick="openChapter(7)">
       <div class="chapter-icon">
@@ -610,6 +627,9 @@
       <div class="chapter-title">
        Aktivitas Permainan dan Olahraga Air
       </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
+      </div>
      </div>
      <div class="chapter-card" onclick="openChapter(8)">
       <div class="chapter-icon">
@@ -620,6 +640,9 @@
       </div>
       <div class="chapter-title">
        Perilaku Hidup Sehat
+      </div>
+      <div class="difficulty-badge">
+       Tingkat Dasar
       </div>
      </div>
     </div>
@@ -635,7 +658,7 @@
        <div class="style-title">
         Visual
        </div>
-       <p>Lihat gambar dan video</p>
+       <p>Lihat gambar dan contoh</p>
       </div>
       <div class="style-card" onclick="showContent('auditory')">
        <div class="style-icon">
@@ -661,7 +684,7 @@
       <div id="custom-materials"></div>
      </div><!-- Quiz Section -->
      <div id="quiz-section" class="quiz-container hidden">
-      <h3>🧠 Kuis Pemahaman</h3>
+      <h3>🧠 Kuis Kelas 2</h3>
       <div id="quiz-content"></div><button class="btn" onclick="nextQuestion()" id="next-btn" style="display: none;">Soal Berikutnya</button> <button class="btn" onclick="showQuizResults()" id="finish-btn" style="display: none;">Lihat Hasil</button>
      </div>
     </div>
@@ -735,10 +758,10 @@
      <div class="content-display">
       <h3>Cara Menggunakan Website PJOK Kelas 2:</h3>
       <ul>
-       <li><strong>Pilih Bab:</strong> Klik pada kartu bab yang ingin dipelajari (ada 8 bab)</li>
+       <li><strong>Pilih Bab:</strong> Klik pada kartu bab yang ingin dipelajari (ada 8 bab untuk kelas 2)</li>
        <li><strong>Pilih Gaya Belajar:</strong> Pilih cara belajar yang paling cocok: 
         <ul>
-         <li>👀 <strong>Visual:</strong> Belajar dengan melihat gambar dan diagram</li>
+         <li>👀 <strong>Visual:</strong> Belajar dengan melihat gambar dan contoh</li>
          <li>👂 <strong>Auditori:</strong> Belajar dengan mendengar penjelasan</li>
          <li>🤸‍♀️ <strong>Kinestetik:</strong> Belajar dengan praktik langsung</li>
         </ul></li>
@@ -748,21 +771,22 @@
       <h3>Materi PJOK Kelas 2:</h3>
       <ol>
        <li><strong>Gerak Dasar Lokomotor:</strong> Berjalan, berlari, melompat, meloncat</li>
-       <li><strong>Gerak Dasar Non Lokomotor:</strong> Menekuk, memutar, mengayun</li>
-       <li><strong>Gerak Dasar Manipulatif:</strong> Melempar, menangkap, menendang</li>
-       <li><strong>Aktivitas Senam:</strong> Senam lantai dan senam irama</li>
+       <li><strong>Gerak Dasar Non Lokomotor:</strong> Menekuk, meluruskan, memutar, mengayun</li>
+       <li><strong>Gerak Dasar Manipulatif:</strong> Melempar, menangkap, menendang, memantulkan</li>
+       <li><strong>Aktivitas Senam:</strong> Gerakan senam sederhana dan aman</li>
        <li><strong>Aktivitas Gerak Berirama:</strong> Gerak mengikuti irama musik</li>
-       <li><strong>Aktivitas Kebugaran Jasmani:</strong> Latihan untuk kesehatan tubuh</li>
-       <li><strong>Aktivitas Permainan dan Olahraga Air:</strong> Bermain di air dengan aman</li>
-       <li><strong>Perilaku Hidup Sehat:</strong> Kebiasaan hidup sehat sehari-hari</li>
+       <li><strong>Aktivitas Kebugaran Jasmani:</strong> Latihan untuk menjaga kesehatan tubuh</li>
+       <li><strong>Aktivitas Permainan dan Olahraga Air:</strong> Permainan air yang aman</li>
+       <li><strong>Perilaku Hidup Sehat:</strong> Kebiasaan baik untuk kesehatan</li>
       </ol>
       <h3>Tips Belajar untuk Kelas 2:</h3>
       <ul>
-       <li>Baca materi dengan perlahan dan teliti</li>
-       <li>Praktikkan gerakan yang dipelajari dengan hati-hati</li>
-       <li>Tanyakan pada guru jika ada yang tidak dipahami</li>
-       <li>Kerjakan kuis dengan jujur dan tenang</li>
-       <li>Selalu ingat keselamatan saat berolahraga</li>
+       <li>Ikuti instruksi guru dengan baik</li>
+       <li>Berlatih dengan gembira dan semangat</li>
+       <li>Jangan takut untuk bertanya jika tidak mengerti</li>
+       <li>Selalu utamakan keselamatan</li>
+       <li>Kerjakan kuis dengan tenang</li>
+       <li>Rajin berolahraga untuk tubuh yang sehat</li>
       </ul>
      </div>
     </div>
@@ -771,9 +795,9 @@
   <script>
         // Configuration object
         const defaultConfig = {
-            site_title: "Asyiknya Belajar PJOK Kelas 2! 🏃‍♂️⚽",
-            welcome_message: "Selamat datang adik-adik kelas 2! Mari belajar olahraga dengan gembira!",
-            teacher_name: "Guru PJOK: Bapak Ahmad Santoso, S.Pd"
+            site_title: "Ayo Belajar PJOK Kelas 2! 🏃‍♂️⚽🤸‍♀️",
+            welcome_message: "Selamat datang siswa kelas 2! Mari belajar olahraga dengan cara yang menyenangkan dan mudah!",
+            teacher_name: "Guru PJOK: Siti Nur Aisyah, S. Pd"
         };
 
         // Global variables
@@ -784,40 +808,35 @@
         let materials = [];
         let quizQuestions = [];
 
-        // Chapter data for Grade 2
+        // Chapter data for Grade 2 (simpler content)
         const chapters = {
             1: {
                 title: "Gerak Dasar Lokomotor",
-                icon: "🚶‍♂️",
+                icon: "🏃‍♂️",
                 content: {
-                    visual: "Mari lihat berbagai gerakan lokomotor! Gerak lokomotor adalah gerakan yang memindahkan tubuh dari satu tempat ke tempat lain. Contohnya: berjalan dengan langkah teratur, berlari dengan mengangkat lutut, melompat dengan kedua kaki, meloncat dengan satu kaki, dan merangkak dengan tangan dan lutut.",
-                    auditory: "Dengarkan penjelasan gerak lokomotor: Pertama, berjalan - angkat kaki kanan, letakkan di depan, lalu kaki kiri menyusul. Kedua, berlari - seperti berjalan tapi lebih cepat dengan mengangkat lutut. Ketiga, melompat - tolak dengan kedua kaki bersamaan. Keempat, meloncat - tolak dengan satu kaki bergantian.",
-                    kinesthetic: "Ayo praktik gerak lokomotor! 1) Berjalan 20 langkah dengan punggung tegak, 2) Berlari pelan 10 meter, 3) Melompat di tempat 10 kali, 4) Meloncat dengan kaki kanan 5 kali, lalu kaki kiri 5 kali, 5) Merangkak maju 5 meter dengan hati-hati."
+                    visual: "Lihat gerak lokomotor yang mudah! Gerak lokomotor adalah gerakan berpindah tempat. Ada 4 gerakan dasar: 1) Berjalan - langkah kaki bergantian dengan tenang, 2) Berlari - langkah cepat dengan kedua kaki bergantian, 3) Melompat - tolakan dua kaki dan mendarat dengan dua kaki, 4) Meloncat - tolakan satu kaki dan mendarat dengan satu atau dua kaki. Semua gerakan harus dilakukan dengan hati-hati dan gembira!",
+                    auditory: "Dengarkan cara melakukan gerak lokomotor: Pertama, berjalan dengan langkah pelan dan teratur, angkat kaki bergantian kanan-kiri. Kedua, berlari dengan langkah lebih cepat, ayunkan tangan untuk keseimbangan. Ketiga, melompat dengan menekuk lutut, tolak dengan dua kaki, dan mendarat dengan lembut. Keempat, meloncat dengan satu kaki, tolak kuat-kuat, dan mendarat dengan aman. Ingat, selalu lakukan pemanasan dulu!",
+                    kinesthetic: "Ayo praktik gerak lokomotor! 1) Berjalan di tempat 20 kali, lalu berjalan maju 10 langkah, 2) Berlari pelan di tempat 15 detik, lalu berlari maju 5 meter, 3) Melompat di tempat 10 kali, pastikan mendarat dengan lembut, 4) Meloncat dengan kaki kanan 5 kali, lalu kaki kiri 5 kali, 5) Kombinasi: berjalan 5 langkah + berlari 3 meter + melompat 3 kali + meloncat 4 kali. Lakukan dengan gembira dan hati-hati!"
                 },
                 quiz: [
                     {
-                        question: "Apa yang dimaksud dengan gerak lokomotor?",
-                        options: ["Gerakan di tempat", "Gerakan berpindah tempat", "Gerakan dengan bola", "Gerakan tangan saja"],
+                        question: "Apa itu gerak lokomotor?",
+                        options: ["Gerakan di tempat", "Gerakan berpindah tempat", "Gerakan dengan bola", "Gerakan tidur"],
                         correct: 1
                     },
                     {
                         question: "Contoh gerak lokomotor adalah?",
-                        options: ["Menekuk lutut", "Berlari", "Memutar lengan", "Mengangkat tangan"],
+                        options: ["Menekuk tangan", "Berjalan dan berlari", "Duduk diam", "Memutar kepala"],
                         correct: 1
                     },
                     {
                         question: "Saat melompat, kita menggunakan?",
-                        options: ["Satu kaki", "Kedua kaki bersamaan", "Tangan", "Kepala"],
+                        options: ["Satu kaki", "Dua kaki untuk tolakan", "Tangan saja", "Kepala"],
                         correct: 1
                     },
                     {
                         question: "Perbedaan melompat dan meloncat adalah?",
-                        options: ["Tidak ada perbedaan", "Melompat pakai kedua kaki, meloncat pakai satu kaki", "Melompat lebih tinggi", "Meloncat lebih cepat"],
-                        correct: 1
-                    },
-                    {
-                        question: "Saat berjalan, posisi punggung sebaiknya?",
-                        options: ["Membungkuk", "Tegak", "Miring", "Tidak penting"],
+                        options: ["Tidak ada bedanya", "Melompat pakai dua kaki, meloncat pakai satu kaki", "Melompat lebih tinggi", "Meloncat lebih cepat"],
                         correct: 1
                     }
                 ]
@@ -826,34 +845,29 @@
                 title: "Gerak Dasar Non Lokomotor",
                 icon: "🤸‍♀️",
                 content: {
-                    visual: "Lihat gerakan non lokomotor! Gerak non lokomotor adalah gerakan yang tidak berpindah tempat. Contohnya: menekuk dan meluruskan siku, memutar badan ke kanan dan kiri, mengayun lengan ke depan dan belakang, membungkuk dan berdiri tegak, serta meregangkan otot.",
-                    auditory: "Cara melakukan gerak non lokomotor: Pertama, menekuk - lipat siku atau lutut perlahan. Kedua, memutar - putar badan atau lengan dengan lembut. Ketiga, mengayun - gerakkan lengan seperti bandul jam. Keempat, membungkuk - tekuk pinggang ke depan perlahan. Semua gerakan dilakukan dengan hati-hati.",
-                    kinesthetic: "Mari praktik gerak non lokomotor! 1) Menekuk dan meluruskan siku 10 kali, 2) Memutar badan ke kanan dan kiri masing-masing 5 kali, 3) Mengayun lengan ke depan dan belakang 10 kali, 4) Membungkuk dan berdiri tegak 8 kali, 5) Meregangkan lengan ke atas 5 kali."
+                    visual: "Lihat gerak non lokomotor yang mudah! Gerak non lokomotor adalah gerakan di tempat tanpa berpindah. Ada 4 gerakan dasar: 1) Menekuk - membengkokkan bagian tubuh seperti siku atau lutut, 2) Meluruskan - membuat bagian tubuh menjadi lurus, 3) Memutar - menggerakkan bagian tubuh berputar, 4) Mengayun - menggerakkan bagian tubuh maju-mundur atau kanan-kiri. Semua gerakan dilakukan dengan perlahan dan aman!",
+                    auditory: "Cara melakukan gerak non lokomotor: Pertama, menekuk siku dengan perlahan, tahan 3 detik, lalu luruskan. Kedua, memutar kepala ke kanan perlahan, lalu ke kiri. Ketiga, mengayun lengan ke depan dan ke belakang dengan lembut. Keempat, menekuk lutut naik-turun seperti jongkok. Ingat, jangan terburu-buru dan rasakan setiap gerakan!",
+                    kinesthetic: "Mari praktik gerak non lokomotor! 1) Menekuk dan meluruskan siku 8 kali, 2) Memutar kepala kanan-kiri masing-masing 5 kali, 3) Mengayun lengan depan-belakang 10 kali, 4) Menekuk lutut naik-turun 8 kali, 5) Memutar pinggang kanan-kiri masing-masing 6 kali, 6) Mengayun kaki kanan-kiri bergantian 8 kali. Lakukan dengan pelan dan hati-hati!"
                 },
                 quiz: [
                     {
-                        question: "Gerak non lokomotor adalah gerakan yang?",
-                        options: ["Berpindah tempat", "Tidak berpindah tempat", "Menggunakan bola", "Dilakukan bersama"],
+                        question: "Gerak non lokomotor adalah?",
+                        options: ["Gerakan berpindah tempat", "Gerakan di tempat", "Gerakan dengan bola", "Gerakan cepat"],
                         correct: 1
                     },
                     {
                         question: "Contoh gerak non lokomotor adalah?",
-                        options: ["Berlari", "Menekuk siku", "Melompat", "Berjalan"],
+                        options: ["Berlari", "Menekuk dan memutar", "Melompat jauh", "Berjalan cepat"],
                         correct: 1
                     },
                     {
-                        question: "Saat memutar badan, kita harus?",
-                        options: ["Cepat-cepat", "Perlahan dan hati-hati", "Sambil melompat", "Dengan mata tertutup"],
+                        question: "Saat memutar kepala, kita harus?",
+                        options: ["Cepat-cepat", "Perlahan dan hati-hati", "Sambil berlari", "Dengan mata tertutup"],
                         correct: 1
                     },
                     {
-                        question: "Mengayun lengan seperti gerakan?",
-                        options: ["Bandul jam", "Sayap burung", "Roda berputar", "Ular merayap"],
-                        correct: 0
-                    },
-                    {
-                        question: "Manfaat gerak non lokomotor adalah?",
-                        options: ["Membuat lelah", "Melatih kelenturan", "Membuat pusing", "Tidak ada manfaat"],
+                        question: "Mengayun lengan sebaiknya dilakukan?",
+                        options: ["Sekuat tenaga", "Dengan lembut dan terkontrol", "Sambil melompat", "Dengan cepat"],
                         correct: 1
                     }
                 ]
@@ -862,34 +876,29 @@
                 title: "Gerak Dasar Manipulatif",
                 icon: "⚽",
                 content: {
-                    visual: "Perhatikan gerak manipulatif! Gerak manipulatif adalah gerakan menggunakan atau memanipulasi benda. Contohnya: melempar bola dengan kedua tangan, menangkap bola dengan aman, menendang bola dengan kaki bagian dalam, memantulkan bola ke lantai, dan menggelindingkan bola di tanah.",
-                    auditory: "Teknik gerak manipulatif: Pertama, melempar - pegang bola dengan kedua tangan, ayunkan ke belakang, lalu dorong ke depan. Kedua, menangkap - siapkan kedua tangan, fokus pada bola, tangkap dengan lembut. Ketiga, menendang - gunakan kaki bagian dalam, arahkan ke target. Keempat, memantulkan - dorong bola ke bawah dengan telapak tangan.",
-                    kinesthetic: "Ayo berlatih gerak manipulatif! 1) Lempar tangkap bola dengan teman 15 kali, 2) Tendang bola ke dinding 10 kali, 3) Pantulkan bola ke lantai 20 kali, 4) Gelindingkan bola ke teman 10 kali, 5) Lempar bola ke keranjang 8 kali."
+                    visual: "Lihat gerak manipulatif yang mudah! Gerak manipulatif adalah gerakan menggunakan benda. Ada 4 gerakan dasar: 1) Melempar - melepaskan benda dari tangan ke arah tertentu, 2) Menangkap - menerima benda yang datang dengan tangan, 3) Menendang - mendorong benda dengan kaki, 4) Memantulkan - menjatuhkan benda lalu menangkap kembali. Gunakan bola yang lembut dan aman untuk berlatih!",
+                    auditory: "Cara melakukan gerak manipulatif: Pertama, melempar bola dengan tangan kanan ke atas, lalu tangkap dengan kedua tangan. Kedua, lempar bola ke teman, pastikan tidak terlalu keras. Ketiga, tendang bola pelan-pelan dengan kaki bagian dalam. Keempat, pantulkan bola ke lantai, lalu tangkap saat naik. Selalu fokus pada bola dan bersiap menangkap!",
+                    kinesthetic: "Ayo praktik gerak manipulatif! 1) Lempar bola ke atas dan tangkap 8 kali, 2) Lempar bola ke dinding dan tangkap pantulannya 6 kali, 3) Tendang bola pelan ke depan 5 kali, 4) Pantulkan bola ke lantai dan tangkap 10 kali, 5) Lempar tangkap dengan teman jarak 2 meter sebanyak 8 kali, 6) Tendang bola ke target (kotak atau lingkaran) 5 kali. Gunakan bola yang lembut!"
                 },
                 quiz: [
                     {
-                        question: "Gerak manipulatif adalah gerakan yang?",
-                        options: ["Tanpa alat", "Menggunakan benda/alat", "Di tempat saja", "Berpindah tempat"],
+                        question: "Gerak manipulatif adalah?",
+                        options: ["Gerakan tanpa alat", "Gerakan menggunakan benda", "Gerakan di tempat", "Gerakan tidur"],
                         correct: 1
                     },
                     {
-                        question: "Saat melempar bola, kita menggunakan?",
-                        options: ["Satu tangan", "Kedua tangan", "Kaki", "Kepala"],
+                        question: "Contoh gerak manipulatif adalah?",
+                        options: ["Berjalan", "Melempar dan menangkap", "Menekuk siku", "Memutar kepala"],
                         correct: 1
                     },
                     {
-                        question: "Bagian kaki yang digunakan untuk menendang bola adalah?",
-                        options: ["Ujung kaki", "Kaki bagian dalam", "Tumit", "Punggung kaki"],
+                        question: "Saat menangkap bola, kita harus?",
+                        options: ["Menutup mata", "Fokus pada bola dan siap", "Berlari menjauh", "Berdiri diam saja"],
                         correct: 1
                     },
                     {
-                        question: "Saat menangkap bola, mata harus?",
-                        options: ["Tertutup", "Melihat ke samping", "Fokus pada bola", "Melihat ke atas"],
-                        correct: 2
-                    },
-                    {
-                        question: "Memantulkan bola dilakukan dengan?",
-                        options: ["Kepala", "Telapak tangan", "Siku", "Bahu"],
+                        question: "Menendang bola sebaiknya menggunakan?",
+                        options: ["Ujung kaki", "Kaki bagian dalam", "Tumit", "Lutut"],
                         correct: 1
                     }
                 ]
@@ -898,34 +907,29 @@
                 title: "Aktivitas Senam",
                 icon: "🤸",
                 content: {
-                    visual: "Mari lihat aktivitas senam! Senam adalah gerakan yang teratur dan terarah. Ada senam lantai seperti berguling ke depan, berdiri dengan satu kaki, dan senam irama seperti gerakan tangan mengikuti musik. Senam membuat tubuh lentur dan kuat.",
-                    auditory: "Cara melakukan senam: Pertama, pemanasan dengan gerakan ringan. Kedua, senam lantai - berguling dengan menekuk kepala, berdiri satu kaki dengan keseimbangan. Ketiga, senam irama - gerakkan tangan dan kaki mengikuti irama musik. Keempat, pendinginan dengan peregangan.",
-                    kinesthetic: "Praktik aktivitas senam! 1) Pemanasan dengan jalan di tempat 2 menit, 2) Berguling ke depan 3 kali (dengan bantuan guru), 3) Berdiri dengan satu kaki selama 10 detik, 4) Senam irama dengan musik 5 menit, 5) Peregangan untuk pendinginan 3 menit."
+                    visual: "Lihat gerakan senam yang aman untuk kelas 2! Senam untuk kelas 2 meliputi: 1) Peregangan sederhana - merentangkan tangan dan kaki, 2) Keseimbangan - berdiri dengan satu kaki, 3) Gerakan koordinasi - menggerakkan tangan dan kaki bersamaan, 4) Sikap tubuh yang baik - berdiri tegak dan duduk yang benar. Semua gerakan dilakukan dengan perlahan dan aman!",
+                    auditory: "Cara melakukan senam sederhana: Pertama, berdiri tegak, rentangkan tangan ke samping, tahan 5 detik. Kedua, angkat satu kaki, tahan keseimbangan 5 detik, ganti kaki. Ketiga, jalan di garis lurus dengan tangan terentang. Keempat, duduk tegak dengan punggung lurus. Ingat, jangan memaksakan diri dan minta bantuan guru jika perlu!",
+                    kinesthetic: "Mari bersenam dengan aman! 1) Peregangan: rentangkan tangan ke atas 10 detik, ke samping 10 detik, 2) Keseimbangan: berdiri satu kaki kanan 8 detik, kiri 8 detik, 3) Koordinasi: jalan sambil ayun tangan 10 langkah, 4) Sikap tubuh: berdiri tegak 15 detik, duduk tegak 15 detik, 5) Gerakan sederhana: jongkok-berdiri 6 kali, 6) Relaksasi: tarik napas dalam 5 kali. Selalu dengan pengawasan guru!"
                 },
                 quiz: [
                     {
-                        question: "Senam adalah gerakan yang?",
-                        options: ["Asal-asalan", "Teratur dan terarah", "Cepat-cepat", "Tanpa aturan"],
+                        question: "Senam untuk kelas 2 sebaiknya?",
+                        options: ["Sulit dan berbahaya", "Sederhana dan aman", "Cepat dan keras", "Tanpa aturan"],
                         correct: 1
                     },
                     {
-                        question: "Sebelum senam, kita harus melakukan?",
-                        options: ["Langsung berguling", "Pemanasan", "Makan", "Tidur"],
+                        question: "Saat berlatih keseimbangan, kita harus?",
+                        options: ["Bergerak cepat", "Tenang dan fokus", "Menutup mata", "Berlari"],
                         correct: 1
                     },
                     {
-                        question: "Saat berguling ke depan, kepala harus?",
-                        options: ["Tegak", "Ditekuk ke dada", "Diangkat tinggi", "Miring"],
+                        question: "Peregangan bermanfaat untuk?",
+                        options: ["Membuat lelah", "Melenturkan otot", "Membuat pusing", "Tidak ada manfaat"],
                         correct: 1
                     },
                     {
-                        question: "Senam irama dilakukan mengikuti?",
-                        options: ["Keinginan sendiri", "Irama musik", "Teman", "Guru saja"],
-                        correct: 1
-                    },
-                    {
-                        question: "Manfaat senam adalah?",
-                        options: ["Membuat lelah", "Tubuh lentur dan kuat", "Membuat lapar", "Tidak ada manfaat"],
+                        question: "Sikap tubuh yang baik saat berdiri adalah?",
+                        options: ["Membungkuk", "Tegak dan lurus", "Miring ke samping", "Jongkok"],
                         correct: 1
                     }
                 ]
@@ -934,35 +938,30 @@
                 title: "Aktivitas Gerak Berirama",
                 icon: "💃",
                 content: {
-                    visual: "Lihat gerak berirama yang indah! Gerak berirama adalah gerakan yang mengikuti irama musik atau hitungan. Contohnya: langkah kaki mengikuti ketukan, ayunan lengan sesuai tempo, gerakan kepala mengikuti irama, dan kombinasi gerakan seluruh tubuh yang harmonis.",
-                    auditory: "Teknik gerak berirama: Dengarkan musik dengan seksama, rasakan ketukannya. Mulai dengan langkah kaki kanan-kiri mengikuti ketukan. Tambahkan ayunan lengan yang lembut. Gerakkan kepala mengikuti irama. Kombinasikan semua gerakan menjadi satu kesatuan yang indah.",
-                    kinesthetic: "Ayo bergerak berirama! 1) Dengarkan musik dan tepuk tangan mengikuti irama 2 menit, 2) Langkah kaki kanan-kiri 16 ketukan, 3) Ayunkan lengan ke atas-bawah 16 kali, 4) Kombinasi langkah kaki dan ayunan lengan 3 menit, 5) Gerak bebas mengikuti musik favorit 5 menit."
+                    visual: "Lihat gerak berirama yang menyenangkan! Gerak berirama adalah gerakan mengikuti musik. Untuk kelas 2: 1) Tepuk tangan mengikuti irama, 2) Langkah kaki kanan-kiri sesuai musik, 3) Ayunan tangan sederhana, 4) Gerakan kepala mengikuti irama. Pilih musik yang ceria dan tidak terlalu cepat untuk berlatih!",
+                    auditory: "Cara bergerak mengikuti irama: Pertama, dengarkan musik dengan baik, rasakan ketukannya. Kedua, mulai dengan tepuk tangan mengikuti irama. Ketiga, tambahkan langkah kaki kanan-kiri. Keempat, ayunkan tangan ke atas-bawah mengikuti musik. Kelima, gerakkan kepala pelan-pelan. Ingat, yang penting adalah mengikuti irama, bukan gerakan yang sulit!",
+                    kinesthetic: "Ayo bergerak berirama! 1) Dengarkan musik dan tepuk tangan 1 menit, 2) Langkah kaki kanan-kiri di tempat 1 menit, 3) Ayun tangan ke atas-bawah 1 menit, 4) Kombinasi tepuk + langkah 2 menit, 5) Tambah gerakan kepala kanan-kiri 1 menit, 6) Gerak bebas mengikuti musik 2 menit, 7) Bergerak bersama teman dalam lingkaran 3 menit. Pilih musik yang ceria!"
                 },
                 quiz: [
                     {
-                        question: "Gerak berirama adalah gerakan yang mengikuti?",
-                        options: ["Keinginan sendiri", "Irama musik", "Teman", "Tidak ada aturan"],
+                        question: "Gerak berirama adalah?",
+                        options: ["Gerakan tanpa musik", "Gerakan mengikuti irama musik", "Gerakan cepat", "Gerakan diam"],
                         correct: 1
                     },
                     {
-                        question: "Hal pertama yang harus dilakukan saat gerak berirama adalah?",
-                        options: ["Langsung bergerak", "Mendengarkan musik", "Menutup mata", "Berlari"],
+                        question: "Hal pertama yang harus dilakukan dalam gerak berirama?",
+                        options: ["Langsung menari", "Mendengarkan musik dengan baik", "Berlari cepat", "Menutup mata"],
                         correct: 1
                     },
                     {
-                        question: "Gerakan dalam gerak berirama harus?",
-                        options: ["Cepat", "Sesuai dengan irama", "Lambat", "Tidak teratur"],
+                        question: "Musik untuk gerak berirama kelas 2 sebaiknya?",
+                        options: ["Sangat cepat", "Ceria dan tidak terlalu cepat", "Tanpa irama", "Sangat keras"],
                         correct: 1
                     },
                     {
-                        question: "Bagian tubuh yang bisa digerakkan dalam gerak berirama adalah?",
-                        options: ["Hanya kaki", "Hanya tangan", "Seluruh tubuh", "Hanya kepala"],
-                        correct: 2
-                    },
-                    {
-                        question: "Manfaat gerak berirama adalah?",
-                        options: ["Melatih koordinasi", "Membuat pusing", "Tidak ada manfaat", "Membuat lelah"],
-                        correct: 0
+                        question: "Yang paling penting dalam gerak berirama adalah?",
+                        options: ["Gerakan yang sulit", "Mengikuti irama musik", "Bergerak cepat", "Diam saja"],
+                        correct: 1
                     }
                 ]
             },
@@ -970,34 +969,29 @@
                 title: "Aktivitas Kebugaran Jasmani",
                 icon: "💪",
                 content: {
-                    visual: "Perhatikan aktivitas kebugaran! Kebugaran jasmani membuat tubuh sehat dan kuat. Aktivitasnya meliputi: lari di tempat untuk melatih jantung, push-up ringan untuk melatih lengan, sit-up untuk melatih perut, dan peregangan untuk kelenturan tubuh.",
-                    auditory: "Program kebugaran untuk kelas 2: Pertama, lari di tempat 2 menit untuk melatih jantung dan paru-paru. Kedua, push-up dengan lutut menyentuh lantai 5 kali untuk melatih lengan. Ketiga, sit-up dengan bantuan 8 kali untuk melatih otot perut. Keempat, peregangan seluruh tubuh 5 menit.",
-                    kinesthetic: "Mari berlatih kebugaran! 1) Lari di tempat dengan mengangkat lutut 3 menit, 2) Push-up dengan lutut di lantai 8 kali, 3) Sit-up dengan bantuan teman 10 kali, 4) Peregangan lengan ke atas 10 kali, 5) Peregangan kaki dengan duduk 5 menit, 6) Jalan santai untuk pendinginan 2 menit."
+                    visual: "Lihat aktivitas kebugaran untuk kelas 2! Kebugaran jasmani sederhana meliputi: 1) Jalan cepat - berjalan dengan langkah lebih cepat, 2) Peregangan ringan - merentangkan tubuh, 3) Gerakan sederhana - naik turun tangga, 4) Bermain aktif - permainan yang membuat tubuh bergerak. Semua aktivitas dilakukan dengan gembira dan tidak berlebihan!",
+                    auditory: "Cara menjaga kebugaran untuk kelas 2: Pertama, jalan cepat di halaman selama 5 menit. Kedua, lakukan peregangan tangan dan kaki masing-masing 30 detik. Ketiga, naik turun tangga 5 kali dengan hati-hati. Keempat, bermain permainan aktif seperti petak umpet atau kucing-kucingan. Ingat, istirahat jika merasa lelah!",
+                    kinesthetic: "Mari berlatih kebugaran! 1) Jalan cepat mengelilingi lapangan 3 menit, 2) Peregangan: tangan ke atas 20 detik, ke samping 20 detik, 3) Naik turun bangku kecil 8 kali (hati-hati), 4) Bermain 'Patung' - bergerak lalu diam 5 menit, 5) Permainan 'Simon Says' dengan gerakan 5 menit, 6) Jalan santai untuk pendinginan 2 menit, 7) Duduk dan tarik napas dalam 1 menit."
                 },
                 quiz: [
                     {
-                        question: "Kebugaran jasmani bertujuan untuk?",
-                        options: ["Membuat lelah", "Membuat tubuh sehat dan kuat", "Bermain saja", "Tidak ada tujuan"],
+                        question: "Kebugaran jasmani untuk kelas 2 sebaiknya?",
+                        options: ["Sangat berat", "Sederhana dan menyenangkan", "Membuat sakit", "Tidak perlu"],
                         correct: 1
                     },
                     {
-                        question: "Lari di tempat bermanfaat untuk melatih?",
-                        options: ["Tangan", "Jantung dan paru-paru", "Mata", "Telinga"],
+                        question: "Jika merasa lelah saat berolahraga, kita harus?",
+                        options: ["Terus memaksa", "Istirahat sebentar", "Berlari lebih cepat", "Berhenti total"],
                         correct: 1
                     },
                     {
-                        question: "Push-up untuk kelas 2 sebaiknya dilakukan dengan?",
-                        options: ["Berdiri", "Lutut menyentuh lantai", "Satu tangan", "Mata tertutup"],
+                        question: "Manfaat kebugaran jasmani adalah?",
+                        options: ["Membuat lelah", "Menjaga kesehatan tubuh", "Membuat sakit", "Tidak ada manfaat"],
                         correct: 1
                     },
                     {
-                        question: "Sit-up bermanfaat untuk melatih otot?",
-                        options: ["Lengan", "Kaki", "Perut", "Leher"],
-                        correct: 2
-                    },
-                    {
-                        question: "Setelah olahraga, kita harus melakukan?",
-                        options: ["Langsung duduk", "Peregangan/pendinginan", "Makan banyak", "Tidur"],
+                        question: "Aktivitas kebugaran yang cocok untuk kelas 2 adalah?",
+                        options: ["Angkat beban berat", "Jalan cepat dan bermain aktif", "Lari marathon", "Tidak bergerak"],
                         correct: 1
                     }
                 ]
@@ -1006,34 +1000,29 @@
                 title: "Aktivitas Permainan dan Olahraga Air",
                 icon: "🏊‍♀️",
                 content: {
-                    visual: "Lihat aktivitas air yang menyenangkan! Olahraga air untuk kelas 2 fokus pada keselamatan dan kegembiraan. Aktivitasnya: bermain air di kolam dangkal, belajar mengapung dengan bantuan, gerakan kaki seperti menendang air, dan permainan air yang aman.",
-                    auditory: "Aturan keselamatan di air: Pertama, selalu ada pengawasan orang dewasa. Kedua, gunakan pelampung atau alat bantu. Ketiga, bermain hanya di air dangkal. Keempat, jangan berlari di pinggir kolam. Kelima, dengarkan instruksi guru dengan baik. Keenam, keluar dari air jika merasa lelah.",
-                    kinesthetic: "Praktik aktivitas air (dengan pengawasan): 1) Berjalan di air dangkal 5 menit, 2) Duduk di air dan gerakkan kaki 3 menit, 3) Pegang pinggir kolam dan gerakkan kaki seperti menendang 2 menit, 4) Bermain lempar tangkap bola di air dangkal 10 menit, 5) Latihan pernapasan dengan meniup gelembung 5 menit."
+                    visual: "Lihat aktivitas air yang aman untuk kelas 2! Permainan air sederhana meliputi: 1) Berjalan di air dangkal, 2) Bermain percikan air, 3) Mengapung dengan bantuan pelampung, 4) Permainan sederhana di air dangkal. SELALU dengan pengawasan orang dewasa dan di tempat yang aman!",
+                    auditory: "Aturan keselamatan air untuk kelas 2: Pertama, SELALU ada orang dewasa yang mengawasi. Kedua, hanya bermain di air dangkal (setinggi lutut). Ketiga, gunakan pelampung jika perlu. Keempat, jangan berlari di pinggir kolam karena licin. Kelima, jika merasa takut, segera keluar dari air. Keselamatan adalah yang utama!",
+                    kinesthetic: "Aktivitas air yang aman! (SELALU dengan pengawasan) 1) Berjalan pelan di air dangkal 3 menit, 2) Bermain percikan air dengan tangan 5 menit, 3) Duduk di air dangkal dan main air 5 menit, 4) Permainan 'Patung' di air dangkal 3 menit, 5) Lempar tangkap bola lembut di air 5 menit, 6) Berjalan mundur di air dangkal 2 menit. INGAT: Air hanya setinggi lutut dan selalu ada yang mengawasi!"
                 },
                 quiz: [
                     {
-                        question: "Hal terpenting saat bermain air adalah?",
-                        options: ["Bermain sendiri", "Keselamatan", "Bermain cepat", "Tidak perlu aturan"],
+                        question: "Hal terpenting dalam aktivitas air adalah?",
+                        options: ["Berenang cepat", "Keselamatan dan pengawasan", "Bermain bebas", "Tidak perlu aturan"],
                         correct: 1
                     },
                     {
-                        question: "Saat bermain air, kita harus selalu ada?",
-                        options: ["Teman", "Pengawasan orang dewasa", "Mainan", "Makanan"],
+                        question: "Kedalaman air yang aman untuk kelas 2 adalah?",
+                        options: ["Setinggi kepala", "Setinggi lutut", "Sangat dalam", "Tidak ada batas"],
                         correct: 1
                     },
                     {
-                        question: "Untuk kelas 2, bermain air sebaiknya di?",
-                        options: ["Air dalam", "Air dangkal", "Laut", "Sungai"],
+                        question: "Saat bermain air, kita harus?",
+                        options: ["Sendirian", "Selalu ada yang mengawasi", "Berlari di pinggir kolam", "Tidak perlu hati-hati"],
                         correct: 1
                     },
                     {
-                        question: "Jika merasa lelah saat di air, kita harus?",
-                        options: ["Terus bermain", "Keluar dari air", "Berenang lebih cepat", "Menyelam"],
-                        correct: 1
-                    },
-                    {
-                        question: "Di pinggir kolam, kita tidak boleh?",
-                        options: ["Berjalan", "Berlari", "Duduk", "Berdiri"],
+                        question: "Jika merasa takut di air, kita harus?",
+                        options: ["Memaksa diri", "Segera keluar dan minta bantuan", "Menangis", "Diam saja"],
                         correct: 1
                     }
                 ]
@@ -1042,34 +1031,29 @@
                 title: "Perilaku Hidup Sehat",
                 icon: "🍎",
                 content: {
-                    visual: "Lihat kebiasaan hidup sehat! Perilaku hidup sehat meliputi: makan makanan bergizi seperti sayur dan buah, minum air putih yang cukup, tidur teratur 8-10 jam, rajin mencuci tangan, menjaga kebersihan tubuh, dan berolahraga secara teratur.",
-                    auditory: "Panduan hidup sehat untuk kelas 2: Pertama, makan 3 kali sehari dengan menu seimbang. Kedua, minum air putih 6-8 gelas per hari. Ketiga, tidur malam jam 8 dan bangun jam 6. Keempat, cuci tangan sebelum makan dan setelah bermain. Kelima, mandi 2 kali sehari. Keenam, olahraga minimal 30 menit setiap hari.",
-                    kinesthetic: "Praktik hidup sehat! 1) Cuci tangan dengan sabun selama 20 detik, 2) Minum segelas air putih, 3) Makan buah atau sayur, 4) Gosok gigi dengan benar 2 menit, 5) Olahraga ringan 15 menit, 6) Buat jadwal tidur dan bangun yang teratur."
+                    visual: "Lihat kebiasaan hidup sehat untuk kelas 2! Hidup sehat meliputi: 1) Makan makanan bergizi - nasi, sayur, buah, 2) Minum air putih yang cukup, 3) Tidur cukup 10-11 jam setiap malam, 4) Mandi dan gosok gigi teratur, 5) Bermain dan berolahraga setiap hari. Kebiasaan baik dimulai dari sekarang!",
+                    auditory: "Cara hidup sehat untuk kelas 2: Pertama, makan 3 kali sehari dengan menu sehat - nasi, lauk, sayur, buah. Kedua, minum air putih 6-8 gelas setiap hari. Ketiga, tidur malam jam 8 dan bangun jam 6 pagi. Keempat, mandi 2 kali sehari dan gosok gigi setelah makan. Kelima, bermain dan bergerak aktif minimal 1 jam setiap hari. Hidup sehat itu mudah dan menyenangkan!",
+                    kinesthetic: "Mari praktik hidup sehat! 1) Buat jadwal makan 3 kali sehari, 2) Hitung minum air putih dengan gelas kecil 8 kali, 3) Praktik gosok gigi yang benar selama 2 menit, 4) Cuci tangan dengan sabun 6 langkah, 5) Atur waktu tidur jam 8 malam, 6) Bermain aktif di luar rumah 30 menit, 7) Makan buah dan sayur setiap hari, 8) Buat catatan kegiatan sehat selama seminggu."
                 },
                 quiz: [
                     {
-                        question: "Berapa jam sebaiknya anak kelas 2 tidur setiap malam?",
-                        options: ["4-5 jam", "6-7 jam", "8-10 jam", "12 jam"],
+                        question: "Berapa kali kita harus makan dalam sehari?",
+                        options: ["1 kali", "2 kali", "3 kali", "5 kali"],
                         correct: 2
                     },
                     {
-                        question: "Kapan kita harus mencuci tangan?",
-                        options: ["Hanya saat kotor", "Sebelum makan dan setelah bermain", "Sekali sehari", "Tidak perlu"],
+                        question: "Jam tidur yang baik untuk kelas 2 adalah?",
+                        options: ["Jam 10 malam", "Jam 8 malam", "Jam 12 malam", "Tidak ada aturan"],
                         correct: 1
                     },
                     {
-                        question: "Makanan yang baik untuk kesehatan adalah?",
-                        options: ["Permen dan coklat", "Sayur dan buah", "Gorengan", "Es krim"],
-                        correct: 1
-                    },
-                    {
-                        question: "Berapa gelas air putih yang sebaiknya diminum setiap hari?",
-                        options: ["1-2 gelas", "3-4 gelas", "6-8 gelas", "15 gelas"],
+                        question: "Berapa kali kita harus gosok gigi setiap hari?",
+                        options: ["1 kali", "2 kali", "3 kali", "Tidak perlu"],
                         correct: 2
                     },
                     {
-                        question: "Olahraga sebaiknya dilakukan?",
-                        options: ["Sekali seminggu", "Setiap hari", "Sekali sebulan", "Tidak perlu"],
+                        question: "Makanan sehat untuk kelas 2 adalah?",
+                        options: ["Permen saja", "Nasi, sayur, buah, lauk", "Coklat saja", "Tidak perlu makan"],
                         correct: 1
                     }
                 ]
@@ -1202,7 +1186,7 @@
                                     <img src="${material.image_url}" alt="${material.title}" 
                                          style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
                                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                    <div style="display: none; background: #f56565; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                                    <div style="display: none; background: #e17055; color: white; padding: 10px; border-radius: 5px; text-align: center;">
                                         Gambar tidak dapat dimuat
                                     </div>
                                 </div>
@@ -1231,8 +1215,8 @@
                 quizButtonContainer.id = 'quiz-button-container';
                 quizButtonContainer.style.cssText = 'text-align: center; margin-top: 25px; padding: 25px;';
                 quizButtonContainer.innerHTML = `
-                    <button class="btn" onclick="startQuiz()" style="font-size: 19px; padding: 18px 35px;">
-                        🧠 Mulai Kuis
+                    <button class="btn" onclick="startQuiz()" style="font-size: 18px; padding: 16px 32px;">
+                        🧠 Mulai Kuis Kelas 2
                     </button>
                 `;
                 contentDisplay.appendChild(quizButtonContainer);
@@ -1277,7 +1261,7 @@
                             <img src="${question.image_url}" alt="Gambar soal" 
                                  style="max-width: 100%; max-height: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <div style="display: none; background: #f56565; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                            <div style="display: none; background: #e17055; color: white; padding: 10px; border-radius: 5px; text-align: center;">
                                 Gambar tidak dapat dimuat
                             </div>
                         </div>
@@ -1351,26 +1335,29 @@
             let emoji = '';
             
             if (percentage >= 80) {
-                message = 'Luar biasa! Kamu sangat memahami materi ini!';
+                message = 'Hebat sekali! Kamu sangat pintar!';
                 emoji = '🌟';
             } else if (percentage >= 60) {
-                message = 'Bagus! Kamu cukup memahami materi ini!';
+                message = 'Bagus! Kamu sudah paham materinya!';
                 emoji = '👍';
+            } else if (percentage >= 40) {
+                message = 'Lumayan! Ayo belajar lagi supaya lebih baik!';
+                emoji = '📚';
             } else {
-                message = 'Ayo belajar lagi! Kamu pasti bisa lebih baik!';
+                message = 'Ayo semangat belajar lagi! Kamu pasti bisa!';
                 emoji = '💪';
             }
             
             document.getElementById('quiz-content').innerHTML = `
                 <div style="text-align: center;">
-                    <div style="font-size: 4.5rem; margin-bottom: 25px;">${emoji}</div>
-                    <h3>Hasil Kuis</h3>
-                    <p style="font-size: 2.2rem; margin: 25px 0;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">${emoji}</div>
+                    <h3>Hasil Kuis Kelas 2</h3>
+                    <p style="font-size: 2rem; margin: 20px 0;">
                         ${correct}/${allQuestions.length} (${percentage}%)
                     </p>
-                    <p style="font-size: 1.3rem;">${message}</p>
-                    <button class="btn" onclick="startQuiz()" style="margin: 12px;">🔄 Ulangi Kuis</button>
-                    <button class="btn btn-secondary" onclick="closeModal()">🏠 Kembali ke Beranda</button>
+                    <p style="font-size: 1.2rem;">${message}</p>
+                    <button class="btn" onclick="startQuiz()" style="margin: 10px;">🔄 Coba Lagi</button>
+                    <button class="btn btn-secondary" onclick="closeModal()">🏠 Kembali</button>
                 </div>
             `;
             
@@ -1422,17 +1409,17 @@
             document.getElementById('quiz-panel').classList.add('hidden');
             
             // Reset tab buttons
-            document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #74b9ff, #0984e3)';
-            document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #74b9ff, #0984e3)';
+            document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #a29bfe, #6c5ce7)';
+            document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #a29bfe, #6c5ce7)';
             
             // Show selected panel and highlight tab
             if (tabName === 'materials') {
                 document.getElementById('materials-panel').classList.remove('hidden');
-                document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+                document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #fd79a8, #fdcb6e)';
                 loadMaterials();
             } else if (tabName === 'quiz') {
                 document.getElementById('quiz-panel').classList.remove('hidden');
-                document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+                document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #fd79a8, #fdcb6e)';
                 loadQuizQuestions();
             }
         }
@@ -1678,5 +1665,5 @@
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997905c33542f8e0',t:'MTc2MTk3NTI2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9979565a82c31d6d',t:'MTc2MTk3ODU2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
