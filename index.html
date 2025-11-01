@@ -1,0 +1,1682 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Pembelajaran PJOK Kelas 2</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100%;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            color: #2d3748;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(168, 237, 234, 0.4);
+            font-size: 15px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.6);
+        }
+
+        .title {
+            text-align: center;
+            color: #2d3748;
+            font-size: 2.8rem;
+            margin: 25px 0;
+            text-shadow: 3px 3px 6px rgba(255,255,255,0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-text {
+            text-align: center;
+            color: #4a5568;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Chapter Grid */
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .chapter-card {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 25px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 35px rgba(252, 182, 159, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(252, 182, 159, 0.5);
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.8s;
+        }
+
+        .chapter-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .chapter-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #e53e3e;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.7);
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .chapter-icon {
+            font-size: 4.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffeef8, #e8f4fd);
+            margin: 3% auto;
+            padding: 35px;
+            border-radius: 30px;
+            width: 92%;
+            max-width: 900px;
+            max-height: 85%;
+            overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .close {
+            color: #e53e3e;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #c53030;
+            transform: scale(1.2);
+        }
+
+        /* Learning Styles */
+        .learning-styles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .style-card {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.3);
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .style-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(168, 237, 234, 0.5);
+        }
+
+        .style-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .style-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 25px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .quiz-question {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .quiz-option {
+            background: rgba(255,255,255,0.15);
+            border: 3px solid transparent;
+            padding: 18px;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option.selected {
+            background: rgba(255,255,255,0.3);
+            border-color: white;
+        }
+
+        .quiz-option.correct {
+            background: #48bb78;
+            border-color: #38a169;
+        }
+
+        .quiz-option.incorrect {
+            background: #f56565;
+            border-color: #e53e3e;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            margin-top: 30px;
+        }
+
+        .admin-form {
+            display: grid;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.95);
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: #718096;
+        }
+
+        .form-label {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 17px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+        }
+
+        /* Content Display */
+        .content-display {
+            background: rgba(255,255,255,0.85);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 25px 0;
+            line-height: 1.7;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .material-item {
+            background: rgba(255,255,255,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-12px);
+            }
+            60% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(180deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-buttons {
+                justify-content: center;
+            }
+            
+            .chapters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 8% auto;
+                width: 96%;
+                padding: 25px;
+            }
+            
+            .learning-styles {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 18px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .chapter-number {
+                font-size: 3rem;
+            }
+            
+            .chapter-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            background: #48bb78;
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .error-message {
+            background: #f56565;
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        /* Special styling for grade 2 */
+        .grade-indicator {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #2d3748;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container"><!-- Header -->
+   <div class="header">
+    <div class="nav-buttons"><button class="nav-btn" onclick="showHome()">🏠 Beranda</button> <button class="nav-btn" onclick="showHelp()">❓ Bantuan</button> <button class="nav-btn" onclick="showAdminLogin()">👨‍💼 Admin</button>
+    </div>
+    <div class="grade-indicator">
+     📚 Kelas 2 SD
+    </div>
+    <h1 class="title" id="site-title">Asyiknya Belajar PJOK Kelas 2! 🏃‍♂️⚽</h1>
+    <p class="welcome-text" id="welcome-message">Selamat datang adik-adik kelas 2! Mari belajar olahraga dengan gembira!</p>
+    <p class="welcome-text" id="teacher-name">Guru PJOK: Bapak Ahmad Santoso, S.Pd</p>
+   </div><!-- Main Content -->
+   <div id="main-content">
+    <div class="chapters-grid">
+     <div class="chapter-card" onclick="openChapter(1)">
+      <div class="chapter-icon">
+       🚶‍♂️
+      </div>
+      <div class="chapter-number">
+       1
+      </div>
+      <div class="chapter-title">
+       Gerak Dasar Lokomotor
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(2)">
+      <div class="chapter-icon">
+       🤸‍♀️
+      </div>
+      <div class="chapter-number">
+       2
+      </div>
+      <div class="chapter-title">
+       Gerak Dasar Non Lokomotor
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(3)">
+      <div class="chapter-icon">
+       ⚽
+      </div>
+      <div class="chapter-number">
+       3
+      </div>
+      <div class="chapter-title">
+       Gerak Dasar Manipulatif
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(4)">
+      <div class="chapter-icon">
+       🤸
+      </div>
+      <div class="chapter-number">
+       4
+      </div>
+      <div class="chapter-title">
+       Aktivitas Senam
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(5)">
+      <div class="chapter-icon">
+       💃
+      </div>
+      <div class="chapter-number">
+       5
+      </div>
+      <div class="chapter-title">
+       Aktivitas Gerak Berirama
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(6)">
+      <div class="chapter-icon">
+       💪
+      </div>
+      <div class="chapter-number">
+       6
+      </div>
+      <div class="chapter-title">
+       Aktivitas Kebugaran Jasmani
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(7)">
+      <div class="chapter-icon">
+       🏊‍♀️
+      </div>
+      <div class="chapter-number">
+       7
+      </div>
+      <div class="chapter-title">
+       Aktivitas Permainan dan Olahraga Air
+      </div>
+     </div>
+     <div class="chapter-card" onclick="openChapter(8)">
+      <div class="chapter-icon">
+       🍎
+      </div>
+      <div class="chapter-number">
+       8
+      </div>
+      <div class="chapter-title">
+       Perilaku Hidup Sehat
+      </div>
+     </div>
+    </div>
+   </div><!-- Chapter Modal -->
+   <div id="chapterModal" class="modal">
+    <div class="modal-content"><span class="close" onclick="closeModal()">×</span>
+     <h2 id="modal-title">Bab 1: Gerak Dasar Lokomotor</h2><!-- Learning Styles -->
+     <div class="learning-styles">
+      <div class="style-card" onclick="showContent('visual')">
+       <div class="style-icon">
+        👀
+       </div>
+       <div class="style-title">
+        Visual
+       </div>
+       <p>Lihat gambar dan video</p>
+      </div>
+      <div class="style-card" onclick="showContent('auditory')">
+       <div class="style-icon">
+        👂
+       </div>
+       <div class="style-title">
+        Auditori
+       </div>
+       <p>Dengar penjelasan</p>
+      </div>
+      <div class="style-card" onclick="showContent('kinesthetic')">
+       <div class="style-icon">
+        🤸‍♀️
+       </div>
+       <div class="style-title">
+        Kinestetik
+       </div>
+       <p>Praktik langsung</p>
+      </div>
+     </div><!-- Content Display -->
+     <div id="content-display" class="content-display hidden">
+      <div id="content-text"></div>
+      <div id="custom-materials"></div>
+     </div><!-- Quiz Section -->
+     <div id="quiz-section" class="quiz-container hidden">
+      <h3>🧠 Kuis Pemahaman</h3>
+      <div id="quiz-content"></div><button class="btn" onclick="nextQuestion()" id="next-btn" style="display: none;">Soal Berikutnya</button> <button class="btn" onclick="showQuizResults()" id="finish-btn" style="display: none;">Lihat Hasil</button>
+     </div>
+    </div>
+   </div><!-- Admin Login Modal -->
+   <div id="adminLoginModal" class="modal">
+    <div class="modal-content"><span class="close" onclick="closeModal()">×</span>
+     <h2>🔐 Login Admin</h2>
+     <div class="admin-form">
+      <div class="form-group"><label class="form-label" style="color: #2d3748;">Password:</label> <input type="password" id="admin-password" class="form-input" placeholder="Masukkan password admin">
+      </div><button class="btn" onclick="adminLogin()">Login</button>
+      <div id="login-message"></div>
+     </div>
+    </div>
+   </div><!-- Admin Panel Modal -->
+   <div id="adminPanel" class="modal">
+    <div class="modal-content"><span class="close" onclick="closeModal()">×</span>
+     <h2>👨‍💼 Panel Admin - PJOK Kelas 2</h2><!-- Tab Navigation -->
+     <div style="display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap;"><button class="btn btn-secondary" onclick="showAdminTab('materials')" id="materials-tab">📚 Kelola Materi</button> <button class="btn btn-secondary" onclick="showAdminTab('quiz')" id="quiz-tab">❓ Kelola Soal Kuis</button>
+     </div><!-- Materials Panel -->
+     <div class="admin-panel" id="materials-panel">
+      <h3>Kelola Materi Pembelajaran PJOK Kelas 2</h3>
+      <div class="admin-form">
+       <div class="form-group"><label class="form-label">Bab:</label> <select id="admin-chapter" class="form-select"> <option value="1">Bab 1: Gerak Dasar Lokomotor</option> <option value="2">Bab 2: Gerak Dasar Non Lokomotor</option> <option value="3">Bab 3: Gerak Dasar Manipulatif</option> <option value="4">Bab 4: Aktivitas Senam</option> <option value="5">Bab 5: Aktivitas Gerak Berirama</option> <option value="6">Bab 6: Aktivitas Kebugaran Jasmani</option> <option value="7">Bab 7: Aktivitas Permainan dan Olahraga Air</option> <option value="8">Bab 8: Perilaku Hidup Sehat</option> </select>
+       </div>
+       <div class="form-group"><label class="form-label">Jenis Materi:</label> <select id="admin-type" class="form-select" onchange="toggleMediaFields()"> <option value="visual">Visual</option> <option value="auditory">Auditori</option> <option value="kinesthetic">Kinestetik</option> </select>
+       </div>
+       <div class="form-group"><label class="form-label">Judul Materi:</label> <input type="text" id="admin-title" class="form-input" placeholder="Masukkan judul materi">
+       </div>
+       <div class="form-group"><label class="form-label">Konten Materi:</label> <textarea id="admin-content" class="form-textarea" placeholder="Masukkan konten materi pembelajaran untuk kelas 2"></textarea>
+       </div>
+       <div class="form-group" id="image-group" style="display: none;"><label class="form-label">URL Gambar (Opsional):</label> <input type="url" id="admin-image" class="form-input" placeholder="https://contoh.com/gambar.jpg"> <small style="color: #e2e8f0; font-size: 12px; margin-top: 5px; display: block;"> Masukkan URL gambar yang valid untuk materi visual </small>
+       </div>
+       <div class="form-group" id="audio-group" style="display: none;"><label class="form-label">URL Audio (Opsional):</label> <input type="url" id="admin-audio" class="form-input" placeholder="https://contoh.com/audio.mp3"> <small style="color: #e2e8f0; font-size: 12px; margin-top: 5px; display: block;"> Masukkan URL audio yang valid untuk materi auditori </small>
+       </div>
+       <div style="display: flex; gap: 15px; flex-wrap: wrap;"><button class="btn" onclick="addMaterial()" id="add-btn"> <span class="loading hidden"></span> Tambah Materi </button> <button class="btn btn-secondary" onclick="loadMaterials()">Lihat Semua Materi</button>
+       </div>
+      </div>
+      <div id="admin-message"></div>
+      <div id="materials-list"></div>
+     </div><!-- Quiz Panel -->
+     <div class="admin-panel hidden" id="quiz-panel">
+      <h3>Kelola Soal Kuis PJOK Kelas 2</h3>
+      <div class="admin-form">
+       <div class="form-group"><label class="form-label">Bab:</label> <select id="quiz-chapter" class="form-select"> <option value="1">Bab 1: Gerak Dasar Lokomotor</option> <option value="2">Bab 2: Gerak Dasar Non Lokomotor</option> <option value="3">Bab 3: Gerak Dasar Manipulatif</option> <option value="4">Bab 4: Aktivitas Senam</option> <option value="5">Bab 5: Aktivitas Gerak Berirama</option> <option value="6">Bab 6: Aktivitas Kebugaran Jasmani</option> <option value="7">Bab 7: Aktivitas Permainan dan Olahraga Air</option> <option value="8">Bab 8: Perilaku Hidup Sehat</option> </select>
+       </div>
+       <div class="form-group"><label class="form-label">Pertanyaan:</label> <textarea id="quiz-question" class="form-textarea" placeholder="Masukkan pertanyaan kuis untuk siswa kelas 2"></textarea>
+       </div>
+       <div class="form-group"><label class="form-label">Pilihan A:</label> <input type="text" id="quiz-option-a" class="form-input" placeholder="Pilihan jawaban A">
+       </div>
+       <div class="form-group"><label class="form-label">Pilihan B:</label> <input type="text" id="quiz-option-b" class="form-input" placeholder="Pilihan jawaban B">
+       </div>
+       <div class="form-group"><label class="form-label">Pilihan C:</label> <input type="text" id="quiz-option-c" class="form-input" placeholder="Pilihan jawaban C">
+       </div>
+       <div class="form-group"><label class="form-label">Pilihan D:</label> <input type="text" id="quiz-option-d" class="form-input" placeholder="Pilihan jawaban D">
+       </div>
+       <div class="form-group"><label class="form-label">Jawaban Benar:</label> <select id="quiz-correct" class="form-select"> <option value="0">A</option> <option value="1">B</option> <option value="2">C</option> <option value="3">D</option> </select>
+       </div>
+       <div class="form-group"><label class="form-label">URL Gambar (Opsional):</label> <input type="url" id="quiz-image" class="form-input" placeholder="https://contoh.com/gambar.jpg"> <small style="color: #e2e8f0; font-size: 12px; margin-top: 5px; display: block;"> Masukkan URL gambar untuk soal (opsional) </small>
+       </div>
+       <div style="display: flex; gap: 15px; flex-wrap: wrap;"><button class="btn" onclick="addQuizQuestion()" id="add-quiz-btn"> <span class="loading hidden"></span> Tambah Soal </button> <button class="btn btn-secondary" onclick="loadQuizQuestions()">Lihat Semua Soal</button>
+       </div>
+      </div>
+      <div id="quiz-message"></div>
+      <div id="quiz-list"></div>
+     </div>
+    </div>
+   </div><!-- Help Modal -->
+   <div id="helpModal" class="modal">
+    <div class="modal-content"><span class="close" onclick="closeModal()">×</span>
+     <h2>❓ Bantuan - PJOK Kelas 2</h2>
+     <div class="content-display">
+      <h3>Cara Menggunakan Website PJOK Kelas 2:</h3>
+      <ul>
+       <li><strong>Pilih Bab:</strong> Klik pada kartu bab yang ingin dipelajari (ada 8 bab)</li>
+       <li><strong>Pilih Gaya Belajar:</strong> Pilih cara belajar yang paling cocok: 
+        <ul>
+         <li>👀 <strong>Visual:</strong> Belajar dengan melihat gambar dan diagram</li>
+         <li>👂 <strong>Auditori:</strong> Belajar dengan mendengar penjelasan</li>
+         <li>🤸‍♀️ <strong>Kinestetik:</strong> Belajar dengan praktik langsung</li>
+        </ul></li>
+       <li><strong>Kuis:</strong> Setelah belajar, kerjakan kuis untuk menguji pemahaman</li>
+       <li><strong>Admin:</strong> Guru dapat menambah, mengedit, atau menghapus materi</li>
+      </ul>
+      <h3>Materi PJOK Kelas 2:</h3>
+      <ol>
+       <li><strong>Gerak Dasar Lokomotor:</strong> Berjalan, berlari, melompat, meloncat</li>
+       <li><strong>Gerak Dasar Non Lokomotor:</strong> Menekuk, memutar, mengayun</li>
+       <li><strong>Gerak Dasar Manipulatif:</strong> Melempar, menangkap, menendang</li>
+       <li><strong>Aktivitas Senam:</strong> Senam lantai dan senam irama</li>
+       <li><strong>Aktivitas Gerak Berirama:</strong> Gerak mengikuti irama musik</li>
+       <li><strong>Aktivitas Kebugaran Jasmani:</strong> Latihan untuk kesehatan tubuh</li>
+       <li><strong>Aktivitas Permainan dan Olahraga Air:</strong> Bermain di air dengan aman</li>
+       <li><strong>Perilaku Hidup Sehat:</strong> Kebiasaan hidup sehat sehari-hari</li>
+      </ol>
+      <h3>Tips Belajar untuk Kelas 2:</h3>
+      <ul>
+       <li>Baca materi dengan perlahan dan teliti</li>
+       <li>Praktikkan gerakan yang dipelajari dengan hati-hati</li>
+       <li>Tanyakan pada guru jika ada yang tidak dipahami</li>
+       <li>Kerjakan kuis dengan jujur dan tenang</li>
+       <li>Selalu ingat keselamatan saat berolahraga</li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuration object
+        const defaultConfig = {
+            site_title: "Asyiknya Belajar PJOK Kelas 2! 🏃‍♂️⚽",
+            welcome_message: "Selamat datang adik-adik kelas 2! Mari belajar olahraga dengan gembira!",
+            teacher_name: "Guru PJOK: Bapak Ahmad Santoso, S.Pd"
+        };
+
+        // Global variables
+        let currentChapter = 1;
+        let currentQuizQuestion = 0;
+        let quizAnswers = [];
+        let isAdminLoggedIn = false;
+        let materials = [];
+        let quizQuestions = [];
+
+        // Chapter data for Grade 2
+        const chapters = {
+            1: {
+                title: "Gerak Dasar Lokomotor",
+                icon: "🚶‍♂️",
+                content: {
+                    visual: "Mari lihat berbagai gerakan lokomotor! Gerak lokomotor adalah gerakan yang memindahkan tubuh dari satu tempat ke tempat lain. Contohnya: berjalan dengan langkah teratur, berlari dengan mengangkat lutut, melompat dengan kedua kaki, meloncat dengan satu kaki, dan merangkak dengan tangan dan lutut.",
+                    auditory: "Dengarkan penjelasan gerak lokomotor: Pertama, berjalan - angkat kaki kanan, letakkan di depan, lalu kaki kiri menyusul. Kedua, berlari - seperti berjalan tapi lebih cepat dengan mengangkat lutut. Ketiga, melompat - tolak dengan kedua kaki bersamaan. Keempat, meloncat - tolak dengan satu kaki bergantian.",
+                    kinesthetic: "Ayo praktik gerak lokomotor! 1) Berjalan 20 langkah dengan punggung tegak, 2) Berlari pelan 10 meter, 3) Melompat di tempat 10 kali, 4) Meloncat dengan kaki kanan 5 kali, lalu kaki kiri 5 kali, 5) Merangkak maju 5 meter dengan hati-hati."
+                },
+                quiz: [
+                    {
+                        question: "Apa yang dimaksud dengan gerak lokomotor?",
+                        options: ["Gerakan di tempat", "Gerakan berpindah tempat", "Gerakan dengan bola", "Gerakan tangan saja"],
+                        correct: 1
+                    },
+                    {
+                        question: "Contoh gerak lokomotor adalah?",
+                        options: ["Menekuk lutut", "Berlari", "Memutar lengan", "Mengangkat tangan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat melompat, kita menggunakan?",
+                        options: ["Satu kaki", "Kedua kaki bersamaan", "Tangan", "Kepala"],
+                        correct: 1
+                    },
+                    {
+                        question: "Perbedaan melompat dan meloncat adalah?",
+                        options: ["Tidak ada perbedaan", "Melompat pakai kedua kaki, meloncat pakai satu kaki", "Melompat lebih tinggi", "Meloncat lebih cepat"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat berjalan, posisi punggung sebaiknya?",
+                        options: ["Membungkuk", "Tegak", "Miring", "Tidak penting"],
+                        correct: 1
+                    }
+                ]
+            },
+            2: {
+                title: "Gerak Dasar Non Lokomotor",
+                icon: "🤸‍♀️",
+                content: {
+                    visual: "Lihat gerakan non lokomotor! Gerak non lokomotor adalah gerakan yang tidak berpindah tempat. Contohnya: menekuk dan meluruskan siku, memutar badan ke kanan dan kiri, mengayun lengan ke depan dan belakang, membungkuk dan berdiri tegak, serta meregangkan otot.",
+                    auditory: "Cara melakukan gerak non lokomotor: Pertama, menekuk - lipat siku atau lutut perlahan. Kedua, memutar - putar badan atau lengan dengan lembut. Ketiga, mengayun - gerakkan lengan seperti bandul jam. Keempat, membungkuk - tekuk pinggang ke depan perlahan. Semua gerakan dilakukan dengan hati-hati.",
+                    kinesthetic: "Mari praktik gerak non lokomotor! 1) Menekuk dan meluruskan siku 10 kali, 2) Memutar badan ke kanan dan kiri masing-masing 5 kali, 3) Mengayun lengan ke depan dan belakang 10 kali, 4) Membungkuk dan berdiri tegak 8 kali, 5) Meregangkan lengan ke atas 5 kali."
+                },
+                quiz: [
+                    {
+                        question: "Gerak non lokomotor adalah gerakan yang?",
+                        options: ["Berpindah tempat", "Tidak berpindah tempat", "Menggunakan bola", "Dilakukan bersama"],
+                        correct: 1
+                    },
+                    {
+                        question: "Contoh gerak non lokomotor adalah?",
+                        options: ["Berlari", "Menekuk siku", "Melompat", "Berjalan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat memutar badan, kita harus?",
+                        options: ["Cepat-cepat", "Perlahan dan hati-hati", "Sambil melompat", "Dengan mata tertutup"],
+                        correct: 1
+                    },
+                    {
+                        question: "Mengayun lengan seperti gerakan?",
+                        options: ["Bandul jam", "Sayap burung", "Roda berputar", "Ular merayap"],
+                        correct: 0
+                    },
+                    {
+                        question: "Manfaat gerak non lokomotor adalah?",
+                        options: ["Membuat lelah", "Melatih kelenturan", "Membuat pusing", "Tidak ada manfaat"],
+                        correct: 1
+                    }
+                ]
+            },
+            3: {
+                title: "Gerak Dasar Manipulatif",
+                icon: "⚽",
+                content: {
+                    visual: "Perhatikan gerak manipulatif! Gerak manipulatif adalah gerakan menggunakan atau memanipulasi benda. Contohnya: melempar bola dengan kedua tangan, menangkap bola dengan aman, menendang bola dengan kaki bagian dalam, memantulkan bola ke lantai, dan menggelindingkan bola di tanah.",
+                    auditory: "Teknik gerak manipulatif: Pertama, melempar - pegang bola dengan kedua tangan, ayunkan ke belakang, lalu dorong ke depan. Kedua, menangkap - siapkan kedua tangan, fokus pada bola, tangkap dengan lembut. Ketiga, menendang - gunakan kaki bagian dalam, arahkan ke target. Keempat, memantulkan - dorong bola ke bawah dengan telapak tangan.",
+                    kinesthetic: "Ayo berlatih gerak manipulatif! 1) Lempar tangkap bola dengan teman 15 kali, 2) Tendang bola ke dinding 10 kali, 3) Pantulkan bola ke lantai 20 kali, 4) Gelindingkan bola ke teman 10 kali, 5) Lempar bola ke keranjang 8 kali."
+                },
+                quiz: [
+                    {
+                        question: "Gerak manipulatif adalah gerakan yang?",
+                        options: ["Tanpa alat", "Menggunakan benda/alat", "Di tempat saja", "Berpindah tempat"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat melempar bola, kita menggunakan?",
+                        options: ["Satu tangan", "Kedua tangan", "Kaki", "Kepala"],
+                        correct: 1
+                    },
+                    {
+                        question: "Bagian kaki yang digunakan untuk menendang bola adalah?",
+                        options: ["Ujung kaki", "Kaki bagian dalam", "Tumit", "Punggung kaki"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat menangkap bola, mata harus?",
+                        options: ["Tertutup", "Melihat ke samping", "Fokus pada bola", "Melihat ke atas"],
+                        correct: 2
+                    },
+                    {
+                        question: "Memantulkan bola dilakukan dengan?",
+                        options: ["Kepala", "Telapak tangan", "Siku", "Bahu"],
+                        correct: 1
+                    }
+                ]
+            },
+            4: {
+                title: "Aktivitas Senam",
+                icon: "🤸",
+                content: {
+                    visual: "Mari lihat aktivitas senam! Senam adalah gerakan yang teratur dan terarah. Ada senam lantai seperti berguling ke depan, berdiri dengan satu kaki, dan senam irama seperti gerakan tangan mengikuti musik. Senam membuat tubuh lentur dan kuat.",
+                    auditory: "Cara melakukan senam: Pertama, pemanasan dengan gerakan ringan. Kedua, senam lantai - berguling dengan menekuk kepala, berdiri satu kaki dengan keseimbangan. Ketiga, senam irama - gerakkan tangan dan kaki mengikuti irama musik. Keempat, pendinginan dengan peregangan.",
+                    kinesthetic: "Praktik aktivitas senam! 1) Pemanasan dengan jalan di tempat 2 menit, 2) Berguling ke depan 3 kali (dengan bantuan guru), 3) Berdiri dengan satu kaki selama 10 detik, 4) Senam irama dengan musik 5 menit, 5) Peregangan untuk pendinginan 3 menit."
+                },
+                quiz: [
+                    {
+                        question: "Senam adalah gerakan yang?",
+                        options: ["Asal-asalan", "Teratur dan terarah", "Cepat-cepat", "Tanpa aturan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Sebelum senam, kita harus melakukan?",
+                        options: ["Langsung berguling", "Pemanasan", "Makan", "Tidur"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat berguling ke depan, kepala harus?",
+                        options: ["Tegak", "Ditekuk ke dada", "Diangkat tinggi", "Miring"],
+                        correct: 1
+                    },
+                    {
+                        question: "Senam irama dilakukan mengikuti?",
+                        options: ["Keinginan sendiri", "Irama musik", "Teman", "Guru saja"],
+                        correct: 1
+                    },
+                    {
+                        question: "Manfaat senam adalah?",
+                        options: ["Membuat lelah", "Tubuh lentur dan kuat", "Membuat lapar", "Tidak ada manfaat"],
+                        correct: 1
+                    }
+                ]
+            },
+            5: {
+                title: "Aktivitas Gerak Berirama",
+                icon: "💃",
+                content: {
+                    visual: "Lihat gerak berirama yang indah! Gerak berirama adalah gerakan yang mengikuti irama musik atau hitungan. Contohnya: langkah kaki mengikuti ketukan, ayunan lengan sesuai tempo, gerakan kepala mengikuti irama, dan kombinasi gerakan seluruh tubuh yang harmonis.",
+                    auditory: "Teknik gerak berirama: Dengarkan musik dengan seksama, rasakan ketukannya. Mulai dengan langkah kaki kanan-kiri mengikuti ketukan. Tambahkan ayunan lengan yang lembut. Gerakkan kepala mengikuti irama. Kombinasikan semua gerakan menjadi satu kesatuan yang indah.",
+                    kinesthetic: "Ayo bergerak berirama! 1) Dengarkan musik dan tepuk tangan mengikuti irama 2 menit, 2) Langkah kaki kanan-kiri 16 ketukan, 3) Ayunkan lengan ke atas-bawah 16 kali, 4) Kombinasi langkah kaki dan ayunan lengan 3 menit, 5) Gerak bebas mengikuti musik favorit 5 menit."
+                },
+                quiz: [
+                    {
+                        question: "Gerak berirama adalah gerakan yang mengikuti?",
+                        options: ["Keinginan sendiri", "Irama musik", "Teman", "Tidak ada aturan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Hal pertama yang harus dilakukan saat gerak berirama adalah?",
+                        options: ["Langsung bergerak", "Mendengarkan musik", "Menutup mata", "Berlari"],
+                        correct: 1
+                    },
+                    {
+                        question: "Gerakan dalam gerak berirama harus?",
+                        options: ["Cepat", "Sesuai dengan irama", "Lambat", "Tidak teratur"],
+                        correct: 1
+                    },
+                    {
+                        question: "Bagian tubuh yang bisa digerakkan dalam gerak berirama adalah?",
+                        options: ["Hanya kaki", "Hanya tangan", "Seluruh tubuh", "Hanya kepala"],
+                        correct: 2
+                    },
+                    {
+                        question: "Manfaat gerak berirama adalah?",
+                        options: ["Melatih koordinasi", "Membuat pusing", "Tidak ada manfaat", "Membuat lelah"],
+                        correct: 0
+                    }
+                ]
+            },
+            6: {
+                title: "Aktivitas Kebugaran Jasmani",
+                icon: "💪",
+                content: {
+                    visual: "Perhatikan aktivitas kebugaran! Kebugaran jasmani membuat tubuh sehat dan kuat. Aktivitasnya meliputi: lari di tempat untuk melatih jantung, push-up ringan untuk melatih lengan, sit-up untuk melatih perut, dan peregangan untuk kelenturan tubuh.",
+                    auditory: "Program kebugaran untuk kelas 2: Pertama, lari di tempat 2 menit untuk melatih jantung dan paru-paru. Kedua, push-up dengan lutut menyentuh lantai 5 kali untuk melatih lengan. Ketiga, sit-up dengan bantuan 8 kali untuk melatih otot perut. Keempat, peregangan seluruh tubuh 5 menit.",
+                    kinesthetic: "Mari berlatih kebugaran! 1) Lari di tempat dengan mengangkat lutut 3 menit, 2) Push-up dengan lutut di lantai 8 kali, 3) Sit-up dengan bantuan teman 10 kali, 4) Peregangan lengan ke atas 10 kali, 5) Peregangan kaki dengan duduk 5 menit, 6) Jalan santai untuk pendinginan 2 menit."
+                },
+                quiz: [
+                    {
+                        question: "Kebugaran jasmani bertujuan untuk?",
+                        options: ["Membuat lelah", "Membuat tubuh sehat dan kuat", "Bermain saja", "Tidak ada tujuan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Lari di tempat bermanfaat untuk melatih?",
+                        options: ["Tangan", "Jantung dan paru-paru", "Mata", "Telinga"],
+                        correct: 1
+                    },
+                    {
+                        question: "Push-up untuk kelas 2 sebaiknya dilakukan dengan?",
+                        options: ["Berdiri", "Lutut menyentuh lantai", "Satu tangan", "Mata tertutup"],
+                        correct: 1
+                    },
+                    {
+                        question: "Sit-up bermanfaat untuk melatih otot?",
+                        options: ["Lengan", "Kaki", "Perut", "Leher"],
+                        correct: 2
+                    },
+                    {
+                        question: "Setelah olahraga, kita harus melakukan?",
+                        options: ["Langsung duduk", "Peregangan/pendinginan", "Makan banyak", "Tidur"],
+                        correct: 1
+                    }
+                ]
+            },
+            7: {
+                title: "Aktivitas Permainan dan Olahraga Air",
+                icon: "🏊‍♀️",
+                content: {
+                    visual: "Lihat aktivitas air yang menyenangkan! Olahraga air untuk kelas 2 fokus pada keselamatan dan kegembiraan. Aktivitasnya: bermain air di kolam dangkal, belajar mengapung dengan bantuan, gerakan kaki seperti menendang air, dan permainan air yang aman.",
+                    auditory: "Aturan keselamatan di air: Pertama, selalu ada pengawasan orang dewasa. Kedua, gunakan pelampung atau alat bantu. Ketiga, bermain hanya di air dangkal. Keempat, jangan berlari di pinggir kolam. Kelima, dengarkan instruksi guru dengan baik. Keenam, keluar dari air jika merasa lelah.",
+                    kinesthetic: "Praktik aktivitas air (dengan pengawasan): 1) Berjalan di air dangkal 5 menit, 2) Duduk di air dan gerakkan kaki 3 menit, 3) Pegang pinggir kolam dan gerakkan kaki seperti menendang 2 menit, 4) Bermain lempar tangkap bola di air dangkal 10 menit, 5) Latihan pernapasan dengan meniup gelembung 5 menit."
+                },
+                quiz: [
+                    {
+                        question: "Hal terpenting saat bermain air adalah?",
+                        options: ["Bermain sendiri", "Keselamatan", "Bermain cepat", "Tidak perlu aturan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Saat bermain air, kita harus selalu ada?",
+                        options: ["Teman", "Pengawasan orang dewasa", "Mainan", "Makanan"],
+                        correct: 1
+                    },
+                    {
+                        question: "Untuk kelas 2, bermain air sebaiknya di?",
+                        options: ["Air dalam", "Air dangkal", "Laut", "Sungai"],
+                        correct: 1
+                    },
+                    {
+                        question: "Jika merasa lelah saat di air, kita harus?",
+                        options: ["Terus bermain", "Keluar dari air", "Berenang lebih cepat", "Menyelam"],
+                        correct: 1
+                    },
+                    {
+                        question: "Di pinggir kolam, kita tidak boleh?",
+                        options: ["Berjalan", "Berlari", "Duduk", "Berdiri"],
+                        correct: 1
+                    }
+                ]
+            },
+            8: {
+                title: "Perilaku Hidup Sehat",
+                icon: "🍎",
+                content: {
+                    visual: "Lihat kebiasaan hidup sehat! Perilaku hidup sehat meliputi: makan makanan bergizi seperti sayur dan buah, minum air putih yang cukup, tidur teratur 8-10 jam, rajin mencuci tangan, menjaga kebersihan tubuh, dan berolahraga secara teratur.",
+                    auditory: "Panduan hidup sehat untuk kelas 2: Pertama, makan 3 kali sehari dengan menu seimbang. Kedua, minum air putih 6-8 gelas per hari. Ketiga, tidur malam jam 8 dan bangun jam 6. Keempat, cuci tangan sebelum makan dan setelah bermain. Kelima, mandi 2 kali sehari. Keenam, olahraga minimal 30 menit setiap hari.",
+                    kinesthetic: "Praktik hidup sehat! 1) Cuci tangan dengan sabun selama 20 detik, 2) Minum segelas air putih, 3) Makan buah atau sayur, 4) Gosok gigi dengan benar 2 menit, 5) Olahraga ringan 15 menit, 6) Buat jadwal tidur dan bangun yang teratur."
+                },
+                quiz: [
+                    {
+                        question: "Berapa jam sebaiknya anak kelas 2 tidur setiap malam?",
+                        options: ["4-5 jam", "6-7 jam", "8-10 jam", "12 jam"],
+                        correct: 2
+                    },
+                    {
+                        question: "Kapan kita harus mencuci tangan?",
+                        options: ["Hanya saat kotor", "Sebelum makan dan setelah bermain", "Sekali sehari", "Tidak perlu"],
+                        correct: 1
+                    },
+                    {
+                        question: "Makanan yang baik untuk kesehatan adalah?",
+                        options: ["Permen dan coklat", "Sayur dan buah", "Gorengan", "Es krim"],
+                        correct: 1
+                    },
+                    {
+                        question: "Berapa gelas air putih yang sebaiknya diminum setiap hari?",
+                        options: ["1-2 gelas", "3-4 gelas", "6-8 gelas", "15 gelas"],
+                        correct: 2
+                    },
+                    {
+                        question: "Olahraga sebaiknya dilakukan?",
+                        options: ["Sekali seminggu", "Setiap hari", "Sekali sebulan", "Tidak perlu"],
+                        correct: 1
+                    }
+                ]
+            }
+        };
+
+        // Data SDK Handler
+        const dataHandler = {
+            onDataChanged(data) {
+                // Separate materials and quiz questions
+                materials = data.filter(item => item.type === 'visual' || item.type === 'auditory' || item.type === 'kinesthetic');
+                quizQuestions = data.filter(item => item.type === 'quiz');
+                
+                if (document.getElementById('materials-list')) {
+                    displayMaterials();
+                }
+                if (document.getElementById('quiz-list')) {
+                    displayQuizQuestions();
+                }
+            }
+        };
+
+        // Initialize application
+        async function initApp() {
+            // Initialize Data SDK
+            const initResult = await window.dataSdk.init(dataHandler);
+            if (!initResult.isOk) {
+                console.error("Failed to initialize data SDK");
+            }
+
+            // Initialize Element SDK
+            if (window.elementSdk) {
+                await window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange: async (config) => {
+                        const titleElement = document.getElementById('site-title');
+                        const welcomeElement = document.getElementById('welcome-message');
+                        const teacherElement = document.getElementById('teacher-name');
+                        
+                        if (titleElement) {
+                            titleElement.textContent = config.site_title || defaultConfig.site_title;
+                        }
+                        if (welcomeElement) {
+                            welcomeElement.textContent = config.welcome_message || defaultConfig.welcome_message;
+                        }
+                        if (teacherElement) {
+                            teacherElement.textContent = config.teacher_name || defaultConfig.teacher_name;
+                        }
+                    },
+                    mapToCapabilities: (config) => ({
+                        recolorables: [],
+                        borderables: [],
+                        fontEditable: undefined,
+                        fontSizeable: undefined
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["site_title", config.site_title || defaultConfig.site_title],
+                        ["welcome_message", config.welcome_message || defaultConfig.welcome_message],
+                        ["teacher_name", config.teacher_name || defaultConfig.teacher_name]
+                    ])
+                });
+            }
+        }
+
+        // Navigation functions
+        function showHome() {
+            closeModal();
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        function showHelp() {
+            closeModal();
+            document.getElementById('helpModal').style.display = 'block';
+        }
+
+        function showAdminLogin() {
+            closeModal();
+            document.getElementById('adminLoginModal').style.display = 'block';
+            document.getElementById('admin-password').value = '';
+            document.getElementById('login-message').innerHTML = '';
+        }
+
+        function closeModal() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+        }
+
+        // Chapter functions
+        function openChapter(chapterNum) {
+            currentChapter = chapterNum;
+            const chapter = chapters[chapterNum];
+            
+            document.getElementById('modal-title').textContent = `Bab ${chapterNum}: ${chapter.title}`;
+            document.getElementById('content-display').classList.add('hidden');
+            document.getElementById('quiz-section').classList.add('hidden');
+            
+            // Remove existing quiz button container if any
+            const existingQuizButton = document.getElementById('quiz-button-container');
+            if (existingQuizButton) {
+                existingQuizButton.remove();
+            }
+            
+            document.getElementById('chapterModal').style.display = 'block';
+        }
+
+        function showContent(type) {
+            const chapter = chapters[currentChapter];
+            const contentDisplay = document.getElementById('content-display');
+            const contentText = document.getElementById('content-text');
+            const customMaterials = document.getElementById('custom-materials');
+            
+            contentText.innerHTML = `
+                <h3>${getTypeTitle(type)}</h3>
+                <p>${chapter.content[type]}</p>
+            `;
+            
+            // Show custom materials for this chapter and type
+            const chapterMaterials = materials.filter(m => 
+                m.chapter === currentChapter.toString() && m.type === type
+            );
+            
+            if (chapterMaterials.length > 0) {
+                customMaterials.innerHTML = '<h4>Materi Tambahan:</h4>' + 
+                    chapterMaterials.map(material => `
+                        <div class="material-item">
+                            <h5>${material.title}</h5>
+                            <p>${material.content}</p>
+                            ${material.image_url ? `
+                                <div style="margin: 15px 0;">
+                                    <img src="${material.image_url}" alt="${material.title}" 
+                                         style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; background: #f56565; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                                        Gambar tidak dapat dimuat
+                                    </div>
+                                </div>
+                            ` : ''}
+                            ${material.audio_url ? `
+                                <div style="margin: 15px 0;">
+                                    <audio controls style="width: 100%; border-radius: 10px;">
+                                        <source src="${material.audio_url}" type="audio/mpeg">
+                                        <source src="${material.audio_url}" type="audio/wav">
+                                        <source src="${material.audio_url}" type="audio/ogg">
+                                        Browser Anda tidak mendukung audio.
+                                    </audio>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `).join('');
+            } else {
+                customMaterials.innerHTML = '';
+            }
+            
+            contentDisplay.classList.remove('hidden');
+            
+            // Show quiz button only once - check if it doesn't exist already
+            if (!document.getElementById('quiz-button-container')) {
+                const quizButtonContainer = document.createElement('div');
+                quizButtonContainer.id = 'quiz-button-container';
+                quizButtonContainer.style.cssText = 'text-align: center; margin-top: 25px; padding: 25px;';
+                quizButtonContainer.innerHTML = `
+                    <button class="btn" onclick="startQuiz()" style="font-size: 19px; padding: 18px 35px;">
+                        🧠 Mulai Kuis
+                    </button>
+                `;
+                contentDisplay.appendChild(quizButtonContainer);
+            }
+        }
+
+        function getTypeTitle(type) {
+            const titles = {
+                visual: '👀 Pembelajaran Visual',
+                auditory: '👂 Pembelajaran Auditori', 
+                kinesthetic: '🤸‍♀️ Pembelajaran Kinestetik'
+            };
+            return titles[type] || 'Pembelajaran';
+        }
+
+        // Quiz functions
+        function startQuiz() {
+            currentQuizQuestion = 0;
+            quizAnswers = [];
+            document.getElementById('quiz-section').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            // Get questions from both default and custom sources
+            const defaultQuestions = chapters[currentChapter].quiz;
+            const customQuestions = quizQuestions.filter(q => q.chapter === currentChapter.toString());
+            const allQuestions = [...defaultQuestions, ...customQuestions];
+            
+            if (currentQuizQuestion >= allQuestions.length) {
+                showQuizResults();
+                return;
+            }
+            
+            const question = allQuestions[currentQuizQuestion];
+            
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="quiz-question">
+                    Soal ${currentQuizQuestion + 1}: ${question.question}
+                    ${question.image_url ? `
+                        <div style="margin: 15px 0; text-align: center;">
+                            <img src="${question.image_url}" alt="Gambar soal" 
+                                 style="max-width: 100%; max-height: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; background: #f56565; color: white; padding: 10px; border-radius: 5px; text-align: center;">
+                                Gambar tidak dapat dimuat
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="quiz-options">
+                    ${(question.options || []).map((option, index) => `
+                        <div class="quiz-option" onclick="selectAnswer(${index})" data-index="${index}">
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('finish-btn').style.display = 'none';
+        }
+
+        function selectAnswer(answerIndex) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[answerIndex].classList.add('selected');
+            
+            // Get questions from both default and custom sources
+            const defaultQuestions = chapters[currentChapter].quiz;
+            const customQuestions = quizQuestions.filter(q => q.chapter === currentChapter.toString());
+            const allQuestions = [...defaultQuestions, ...customQuestions];
+            const question = allQuestions[currentQuizQuestion];
+            
+            // Show correct/incorrect
+            setTimeout(() => {
+                options.forEach((option, index) => {
+                    if (index === question.correct) {
+                        option.classList.add('correct');
+                    } else if (index === answerIndex && index !== question.correct) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                quizAnswers[currentQuizQuestion] = answerIndex;
+                
+                if (currentQuizQuestion < allQuestions.length - 1) {
+                    document.getElementById('next-btn').style.display = 'inline-block';
+                } else {
+                    document.getElementById('finish-btn').style.display = 'inline-block';
+                }
+            }, 500);
+        }
+
+        function nextQuestion() {
+            currentQuizQuestion++;
+            showQuestion();
+        }
+
+        function showQuizResults() {
+            // Get questions from both default and custom sources
+            const defaultQuestions = chapters[currentChapter].quiz;
+            const customQuestions = quizQuestions.filter(q => q.chapter === currentChapter.toString());
+            const allQuestions = [...defaultQuestions, ...customQuestions];
+            
+            let correct = 0;
+            
+            quizAnswers.forEach((answer, index) => {
+                if (answer === allQuestions[index].correct) {
+                    correct++;
+                }
+            });
+            
+            const percentage = Math.round((correct / allQuestions.length) * 100);
+            let message = '';
+            let emoji = '';
+            
+            if (percentage >= 80) {
+                message = 'Luar biasa! Kamu sangat memahami materi ini!';
+                emoji = '🌟';
+            } else if (percentage >= 60) {
+                message = 'Bagus! Kamu cukup memahami materi ini!';
+                emoji = '👍';
+            } else {
+                message = 'Ayo belajar lagi! Kamu pasti bisa lebih baik!';
+                emoji = '💪';
+            }
+            
+            document.getElementById('quiz-content').innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 4.5rem; margin-bottom: 25px;">${emoji}</div>
+                    <h3>Hasil Kuis</h3>
+                    <p style="font-size: 2.2rem; margin: 25px 0;">
+                        ${correct}/${allQuestions.length} (${percentage}%)
+                    </p>
+                    <p style="font-size: 1.3rem;">${message}</p>
+                    <button class="btn" onclick="startQuiz()" style="margin: 12px;">🔄 Ulangi Kuis</button>
+                    <button class="btn btn-secondary" onclick="closeModal()">🏠 Kembali ke Beranda</button>
+                </div>
+            `;
+            
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('finish-btn').style.display = 'none';
+        }
+
+        // Toggle media fields based on material type
+        function toggleMediaFields() {
+            const type = document.getElementById('admin-type').value;
+            const imageGroup = document.getElementById('image-group');
+            const audioGroup = document.getElementById('audio-group');
+            
+            // Hide all media fields first
+            imageGroup.style.display = 'none';
+            audioGroup.style.display = 'none';
+            
+            // Show relevant field based on type
+            if (type === 'visual') {
+                imageGroup.style.display = 'block';
+            } else if (type === 'auditory') {
+                audioGroup.style.display = 'block';
+            }
+        }
+
+        // Admin functions
+        function adminLogin() {
+            const password = document.getElementById('admin-password').value;
+            const messageDiv = document.getElementById('login-message');
+            
+            if (password === 'adminpjok2') {
+                isAdminLoggedIn = true;
+                messageDiv.innerHTML = '<div class="success-message">Login berhasil! Mengalihkan ke panel admin...</div>';
+                setTimeout(() => {
+                    closeModal();
+                    document.getElementById('adminPanel').style.display = 'block';
+                    showAdminTab('materials'); // Show materials tab by default
+                    loadMaterials();
+                    toggleMediaFields(); // Initialize media fields visibility
+                }, 1500);
+            } else {
+                messageDiv.innerHTML = '<div class="error-message">Password salah! Silakan coba lagi.</div>';
+            }
+        }
+
+        function showAdminTab(tabName) {
+            // Hide all panels
+            document.getElementById('materials-panel').classList.add('hidden');
+            document.getElementById('quiz-panel').classList.add('hidden');
+            
+            // Reset tab buttons
+            document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #74b9ff, #0984e3)';
+            document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #74b9ff, #0984e3)';
+            
+            // Show selected panel and highlight tab
+            if (tabName === 'materials') {
+                document.getElementById('materials-panel').classList.remove('hidden');
+                document.getElementById('materials-tab').style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+                loadMaterials();
+            } else if (tabName === 'quiz') {
+                document.getElementById('quiz-panel').classList.remove('hidden');
+                document.getElementById('quiz-tab').style.background = 'linear-gradient(45deg, #ff6b6b, #feca57)';
+                loadQuizQuestions();
+            }
+        }
+
+        async function addMaterial() {
+            if (!isAdminLoggedIn) return;
+            
+            const chapter = document.getElementById('admin-chapter').value;
+            const type = document.getElementById('admin-type').value;
+            const title = document.getElementById('admin-title').value;
+            const content = document.getElementById('admin-content').value;
+            const imageUrl = document.getElementById('admin-image').value;
+            const audioUrl = document.getElementById('admin-audio').value;
+            const messageDiv = document.getElementById('admin-message');
+            const addBtn = document.getElementById('add-btn');
+            const loading = addBtn.querySelector('.loading');
+            
+            if (!title || !content) {
+                messageDiv.innerHTML = '<div class="error-message">Harap isi semua field wajib!</div>';
+                return;
+            }
+            
+            // Show loading state
+            loading.classList.remove('hidden');
+            addBtn.disabled = true;
+            
+            const materialData = {
+                id: Date.now().toString(),
+                chapter: chapter,
+                type: type,
+                title: title,
+                content: content,
+                image_url: imageUrl || null,
+                audio_url: audioUrl || null,
+                created_at: new Date().toISOString()
+            };
+            
+            const result = await window.dataSdk.create(materialData);
+            
+            // Hide loading state
+            loading.classList.add('hidden');
+            addBtn.disabled = false;
+            
+            if (result.isOk) {
+                messageDiv.innerHTML = '<div class="success-message">Materi berhasil ditambahkan!</div>';
+                // Clear form
+                document.getElementById('admin-title').value = '';
+                document.getElementById('admin-content').value = '';
+                document.getElementById('admin-image').value = '';
+                document.getElementById('admin-audio').value = '';
+            } else {
+                messageDiv.innerHTML = '<div class="error-message">Gagal menambahkan materi. Silakan coba lagi.</div>';
+            }
+        }
+
+        function loadMaterials() {
+            const materialsList = document.getElementById('materials-list');
+            if (materials.length === 0) {
+                materialsList.innerHTML = '<p style="text-align: center; color: #fff;">Belum ada materi tambahan.</p>';
+                return;
+            }
+            
+            materialsList.innerHTML = `
+                <h4 style="color: #fff; margin-top: 30px;">Daftar Materi (${materials.length}/999)</h4>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    ${materials.map(material => `
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin: 10px 0;">
+                            <h5 style="color: #fff; margin: 0 0 10px 0;">
+                                Bab ${material.chapter} - ${material.type} - ${material.title}
+                            </h5>
+                            <p style="color: #fff; margin: 0 0 10px 0; font-size: 14px;">
+                                ${material.content.substring(0, 100)}${material.content.length > 100 ? '...' : ''}
+                            </p>
+                            <button class="btn btn-danger" onclick="deleteMaterial('${material.__backendId}')" style="font-size: 12px; padding: 8px 16px;">
+                                🗑️ Hapus
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function displayMaterials() {
+            if (document.getElementById('materials-list')) {
+                loadMaterials();
+            }
+        }
+
+        async function deleteMaterial(backendId) {
+            if (!isAdminLoggedIn) return;
+            
+            const material = materials.find(m => m.__backendId === backendId);
+            if (!material) return;
+            
+            const result = await window.dataSdk.delete(material);
+            
+            const messageDiv = document.getElementById('admin-message');
+            if (result.isOk) {
+                messageDiv.innerHTML = '<div class="success-message">Materi berhasil dihapus!</div>';
+            } else {
+                messageDiv.innerHTML = '<div class="error-message">Gagal menghapus materi. Silakan coba lagi.</div>';
+            }
+        }
+
+        // Quiz management functions
+        async function addQuizQuestion() {
+            if (!isAdminLoggedIn) return;
+            
+            const chapter = document.getElementById('quiz-chapter').value;
+            const question = document.getElementById('quiz-question').value;
+            const optionA = document.getElementById('quiz-option-a').value;
+            const optionB = document.getElementById('quiz-option-b').value;
+            const optionC = document.getElementById('quiz-option-c').value;
+            const optionD = document.getElementById('quiz-option-d').value;
+            const correct = parseInt(document.getElementById('quiz-correct').value);
+            const imageUrl = document.getElementById('quiz-image').value;
+            const messageDiv = document.getElementById('quiz-message');
+            const addBtn = document.getElementById('add-quiz-btn');
+            const loading = addBtn.querySelector('.loading');
+            
+            if (!question || !optionA || !optionB || !optionC || !optionD) {
+                messageDiv.innerHTML = '<div class="error-message">Harap isi semua field pertanyaan dan pilihan jawaban!</div>';
+                return;
+            }
+            
+            // Show loading state
+            loading.classList.remove('hidden');
+            addBtn.disabled = true;
+            
+            const quizData = {
+                id: Date.now().toString(),
+                chapter: chapter,
+                type: 'quiz',
+                question: question,
+                options: JSON.stringify([optionA, optionB, optionC, optionD]),
+                correct: correct,
+                image_url: imageUrl || null,
+                created_at: new Date().toISOString()
+            };
+            
+            const result = await window.dataSdk.create(quizData);
+            
+            // Hide loading state
+            loading.classList.add('hidden');
+            addBtn.disabled = false;
+            
+            if (result.isOk) {
+                messageDiv.innerHTML = '<div class="success-message">Soal kuis berhasil ditambahkan!</div>';
+                // Clear form
+                document.getElementById('quiz-question').value = '';
+                document.getElementById('quiz-option-a').value = '';
+                document.getElementById('quiz-option-b').value = '';
+                document.getElementById('quiz-option-c').value = '';
+                document.getElementById('quiz-option-d').value = '';
+                document.getElementById('quiz-correct').value = '0';
+                document.getElementById('quiz-image').value = '';
+            } else {
+                messageDiv.innerHTML = '<div class="error-message">Gagal menambahkan soal kuis. Silakan coba lagi.</div>';
+            }
+        }
+
+        function loadQuizQuestions() {
+            const quizList = document.getElementById('quiz-list');
+            if (quizQuestions.length === 0) {
+                quizList.innerHTML = '<p style="text-align: center; color: #fff;">Belum ada soal kuis tambahan.</p>';
+                return;
+            }
+            
+            quizList.innerHTML = `
+                <h4 style="color: #fff; margin-top: 30px;">Daftar Soal Kuis (${quizQuestions.length}/999)</h4>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    ${quizQuestions.map(quiz => {
+                        const options = JSON.parse(quiz.options || '[]');
+                        return `
+                            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <h5 style="color: #fff; margin: 0 0 10px 0;">
+                                    Bab ${quiz.chapter} - ${quiz.question.substring(0, 50)}${quiz.question.length > 50 ? '...' : ''}
+                                </h5>
+                                <div style="color: #fff; margin: 5px 0; font-size: 14px;">
+                                    <strong>Pilihan:</strong><br>
+                                    A. ${options[0] || ''}<br>
+                                    B. ${options[1] || ''}<br>
+                                    C. ${options[2] || ''}<br>
+                                    D. ${options[3] || ''}<br>
+                                    <strong>Jawaban Benar:</strong> ${['A', 'B', 'C', 'D'][quiz.correct]}
+                                </div>
+                                ${quiz.image_url ? `
+                                    <div style="margin: 10px 0;">
+                                        <img src="${quiz.image_url}" alt="Gambar soal" 
+                                             style="max-width: 200px; max-height: 150px; border-radius: 5px;"
+                                             onerror="this.style.display='none';">
+                                    </div>
+                                ` : ''}
+                                <button class="btn btn-danger" onclick="deleteQuizQuestion('${quiz.__backendId}')" style="font-size: 12px; padding: 8px 16px;">
+                                    🗑️ Hapus
+                                </button>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function displayQuizQuestions() {
+            if (document.getElementById('quiz-list')) {
+                loadQuizQuestions();
+            }
+        }
+
+        async function deleteQuizQuestion(backendId) {
+            if (!isAdminLoggedIn) return;
+            
+            const quiz = quizQuestions.find(q => q.__backendId === backendId);
+            if (!quiz) return;
+            
+            const result = await window.dataSdk.delete(quiz);
+            
+            const messageDiv = document.getElementById('quiz-message');
+            if (result.isOk) {
+                messageDiv.innerHTML = '<div class="success-message">Soal kuis berhasil dihapus!</div>';
+            } else {
+                messageDiv.innerHTML = '<div class="error-message">Gagal menghapus soal kuis. Silakan coba lagi.</div>';
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', initApp);
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997905c33542f8e0',t:'MTc2MTk3NTI2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
